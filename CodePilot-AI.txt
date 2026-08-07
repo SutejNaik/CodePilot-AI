@@ -1,0 +1,68 @@
+CodePilot-AI/
+│
+├── client/
+│   ├── public/
+│   │
+│   ├── src/
+│   │   ├── assets/
+│   │   │   ├── images/
+│   │   │   ├── icons/
+│   │   │   └── logos/
+│   │   │
+│   │   ├── components/
+│   │   │   ├── common/
+│   │   │   ├── layout/
+│   │   │   ├── review/
+│   │   │   └── charts/
+│   │   │
+│   │   ├── pages/
+│   │   │
+│   │   ├── services/
+│   │   │
+│   │   ├── context/
+│   │   │
+│   │   ├── hooks/
+│   │   │
+│   │   ├── utils/
+│   │   │
+│   │   ├── App.jsx
+│   │   ├── main.jsx
+│   │   └── index.css
+│   │
+│   ├── package.json
+│   ├── vite.config.js
+│   └── .env
+│
+├── backend/
+│   ├── app/
+│   │   ├── routes/
+│   │   ├── services/
+│   │   ├── analyzers/
+│   │   ├── models/
+│   │   ├── schemas/
+│   │   ├── config/
+│   │   ├── middleware/
+│   │   ├── utils/
+│   │   └── main.py
+│   │
+│   ├── uploads/
+│   │   ├── temp/
+│   │   └── reports/
+│   │
+│   ├── tests/
+│   │
+│   ├── requirements.txt
+│   ├── .env
+│   └── .gitignore
+│
+├── docs/
+│   ├── screenshots/
+│   ├── diagrams/
+│   ├── api/
+│   └── report/
+│
+├── AI_CONTEXT.md
+├── PROJECT_SPEC.md
+├── README.md
+├── .gitignore
+└── LICENSE

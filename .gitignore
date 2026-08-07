@@ -1,0 +1,21 @@
+# Node modules
+node_modules/
+
+# Python virtual environment
+backend/venv/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Vite
+client/.vite
+client/.vite-temp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env files
+.env
+.env.local
+.env.*.local
