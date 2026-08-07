@@ -14,11 +14,15 @@ import ReviewDetails from "../pages/ReviewDetails";
 export default function AppRoutes() {
     return (
         <BrowserRouter>
+
             <Routes>
+
                 <Route path="/" element={<Home />} />
+
                 <Route path="/login" element={<Login />} />
+
                 <Route path="/register" element={<Register />} />
-                <Route path="/history" element={<History />} />
+
                 <Route
                     path="/dashboard"
                     element={
@@ -27,7 +31,6 @@ export default function AppRoutes() {
                         </ProtectedRoute>
                     }
                 />
-
 
                 <Route
                     path="/review"
@@ -38,7 +41,6 @@ export default function AppRoutes() {
                     }
                 />
 
-
                 <Route
                     path="/history"
                     element={
@@ -47,7 +49,6 @@ export default function AppRoutes() {
                         </ProtectedRoute>
                     }
                 />
-
 
                 <Route
                     path="/profile"
@@ -69,7 +70,9 @@ export default function AppRoutes() {
                 />
 
                 <Route path="*" element={<NotFound />} />
+
             </Routes>
+
         </BrowserRouter>
     );
 }
