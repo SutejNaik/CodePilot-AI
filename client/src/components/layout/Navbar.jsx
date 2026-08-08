@@ -1,123 +1,116 @@
+import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { MoonStar } from "lucide-react";
-import Logo from "../common/Logo";
-import Button from "../common/Button";
 
 export default function Navbar() {
     return (
-        <header className="fixed top-6 left-0 w-full z-50">
-            <div className="w-[92%] max-w-[1500px] mx-auto">
+        <header className="absolute top-0 left-0 right-0 z-50">
 
-                <div className="
-                    h-[72px]
-                    rounded-[30px]
-                    px-8
-                    flex
-                    items-center
-                    justify-between
-                    backdrop-blur-2xl
-                    bg-gradient-to-r
-                    from-white/[0.08]
-                    to-white/[0.03]
-                    border
-                    border-white/10
-                    shadow-[0_15px_60px_rgba(0,0,0,.45)]
-                ">
+            <div className="max-w-[1500px] mx-auto px-10 py-6 flex items-center justify-between">
 
-                    <Logo />
+                {/* Logo */}
+                <Link to="/" className="flex items-center gap-3">
 
-                    <nav className="hidden lg:flex items-center gap-10">
-
-                        {["Features", "How it Works", "Pricing", "Docs"].map((item) => (
-                            <a
-                                key={item}
-                                href="#"
-                                className="
-                                    relative
-                                    text-[15px]
-                                    text-slate-300
-                                    transition
-                                    hover:text-white
-                                    after:absolute
-                                    after:left-0
-                                    after:-bottom-2
-                                    after:h-[2px]
-                                    after:w-0
-                                    after:bg-violet-400
-                                    after:transition-all
-                                    hover:after:w-full
-                                "
-                            >
-                                {item}
-                            </a>
-                        ))}
-
-                    </nav>
-
-                    <div className="flex items-center gap-4">
-
-                        <button
-                            className="
-                                w-11
-                                h-11
-                                rounded-full
-                                border
-                                border-white/10
-                                bg-white/5
-                                flex
-                                items-center
-                                justify-center
-                                hover:bg-white/10
-                                transition
-                            "
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#ff4b45] to-[#d51f25] flex items-center justify-center shadow-[0_8px_25px_-8px_rgba(239,59,57,0.8)]">
+                        <svg
+                            className="w-6 h-6 text-white"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
                         >
-                            <MoonStar size={18} className="text-slate-300" />
-                        </button>
-
-                        <Link to="/login">
-                            <button
-                                className="
-                                    h-11
-                                    px-6
-                                    rounded-full
-                                    text-slate-300
-                                    hover:text-white
-                                    border
-                                    border-white/10
-                                    hover:bg-white/5
-                                    transition
-                                "
-                            >
-                                Log in
-                            </button>
-                        </Link>
-
-                        <Link to="/register">
-                            <Button
-                                className="
-                                    h-11
-                                    px-7
-                                    rounded-full
-                                    bg-gradient-to-r
-                                    from-violet-500
-                                    via-fuchsia-500
-                                    to-purple-500
-                                    hover:scale-105
-                                    transition-all
-                                    duration-300
-                                    text-white
-                                    shadow-[0_0_35px_rgba(168,85,247,.45)]
-                                "
-                            >
-                                Get Started →
-                            </Button>
-                        </Link>
-
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2.5}
+                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                            />
+                        </svg>
                     </div>
+
+                    <div className="leading-none">
+                        <div className="text-xl font-bold tracking-tight text-white">
+                            CodePilot
+                        </div>
+
+                        <div className="mt-1 text-[9px] font-mono tracking-[0.2em] text-[#ff514b]">
+                            AI REVIEW
+                        </div>
+                    </div>
+
+                </Link>
+
+                {/* Center Navigation */}
+                <nav className="hidden lg:flex items-center gap-10 text-[15px] text-white/90">
+
+                    <Link
+                        to="/dashboard"
+                        className="hover:text-red-400 transition-colors duration-200"
+                    >
+                        Dashboard
+                    </Link>
+
+                    <Link
+                        to="/review"
+                        className="hover:text-red-400 transition-colors duration-200"
+                    >
+                        Code Review
+                    </Link>
+
+                    <Link
+                        to="/history"
+                        className="hover:text-red-400 transition-colors duration-200"
+                    >
+                        History
+                    </Link>
+
+                    <Link
+                        to="/profile"
+                        className="hover:text-red-400 transition-colors duration-200"
+                    >
+                        Profile
+                    </Link>
+
+                </nav>
+
+                {/* Right Side */}
+                <div className="flex items-center gap-5">
+
+                    <Link
+                        to="/login"
+                        className="hidden sm:inline text-[15px] text-white hover:text-red-400 transition-colors duration-200"
+                    >
+                        Log in
+                    </Link>
+
+                    <Link
+                        to="/register"
+                        className="
+                            inline-flex
+                            items-center
+                            gap-2
+                            rounded-full
+                            bg-gradient-to-br
+                            from-[#ef3b39]
+                            to-[#b51b1f]
+                            px-6
+                            py-3
+                            text-[14px]
+                            font-semibold
+                            text-white
+                            shadow-[0_10px_30px_-8px_rgba(239,59,57,0.75)]
+                            hover:shadow-[0_14px_35px_-8px_rgba(239,59,57,0.9)]
+                            hover:-translate-y-0.5
+                            transition-all
+                            duration-200
+                        "
+                    >
+                        Get Started
+                        <ArrowRight size={15} />
+                    </Link>
 
                 </div>
 
             </div>
+
         </header>
     );
 }

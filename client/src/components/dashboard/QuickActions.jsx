@@ -1,64 +1,99 @@
 import { Link } from "react-router-dom";
-import { Code2, History, User } from "lucide-react";
-
+import { Code2, History, User, ArrowUpRight } from "lucide-react";
 
 const actions = [
     {
         title: "Review Code",
         description: "Start a new AI code review",
-        icon: <Code2 />,
+        icon: Code2,
         path: "/review",
     },
     {
         title: "View History",
         description: "Check previous reviews",
-        icon: <History />,
+        icon: History,
         path: "/history",
     },
     {
         title: "Profile",
         description: "Manage your account",
-        icon: <User />,
+        icon: User,
         path: "/profile",
     },
 ];
 
-
 export default function QuickActions() {
-
     return (
         <section className="mt-8">
 
-            <h2 className="text-xl font-bold mb-6">
+            <h2 className="text-lg font-semibold text-white mb-5">
                 Quick Actions
             </h2>
 
+            <div className="grid md:grid-cols-3 gap-4">
 
-            <div className="grid md:grid-cols-3 gap-6">
+                {actions.map((action) => {
 
-                {actions.map((action) => (
-                    <Link
-                        key={action.title}
-                        to={action.path}
-                        className="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-blue-500 transition"
-                    >
+                    const Icon = action.icon;
 
-                        <div className="text-blue-500 mb-4">
-                            {action.icon}
-                        </div>
+                    return (
+                        <Link
+                            key={action.title}
+                            to={action.path}
+                            className="
+                                group
+                                relative
+                                rounded-2xl
+                                border border-white/[0.07]
+                                bg-white/[0.025]
+                                p-5
+                                hover:border-red-500/20
+                                hover:bg-white/[0.04]
+                                transition-all
+                                duration-300
+                            "
+                        >
 
+                            <div className="
+                                w-10
+                                h-10
+                                rounded-xl
+                                bg-red-500/10
+                                border border-red-500/15
+                                flex
+                                items-center
+                                justify-center
+                                text-red-400
+                            ">
+                                <Icon size={19} />
+                            </div>
 
-                        <h3 className="font-semibold text-lg">
-                            {action.title}
-                        </h3>
+                            <div className="mt-4 flex justify-between items-start">
 
+                                <div>
+                                    <h3 className="font-semibold text-white">
+                                        {action.title}
+                                    </h3>
 
-                        <p className="text-slate-400 mt-2">
-                            {action.description}
-                        </p>
+                                    <p className="text-sm text-slate-500 mt-1">
+                                        {action.description}
+                                    </p>
+                                </div>
 
-                    </Link>
-                ))}
+                                <ArrowUpRight
+                                    size={16}
+                                    className="
+                                        text-slate-600
+                                        group-hover:text-red-400
+                                        transition
+                                    "
+                                />
+
+                            </div>
+
+                        </Link>
+                    );
+                })}
 
             </div>
 

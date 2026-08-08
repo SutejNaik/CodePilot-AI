@@ -14,7 +14,6 @@ import ReviewDetails from "../pages/ReviewDetails";
 export default function AppRoutes() {
     return (
         <BrowserRouter>
-
             <Routes>
 
                 <Route path="/" element={<Home />} />
@@ -72,7 +71,6 @@ export default function AppRoutes() {
                 <Route path="*" element={<NotFound />} />
 
             </Routes>
-
         </BrowserRouter>
     );
 }

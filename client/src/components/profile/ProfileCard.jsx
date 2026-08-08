@@ -1,113 +1,200 @@
+
 import {
     User,
     Mail,
     Calendar,
     BadgeCheck,
     FileCode2,
-    ShieldCheck
+    ShieldCheck,
 } from "lucide-react";
 
 export default function ProfileCard() {
-
     return (
+        <div className="overflow-hidden rounded-3xl border border-slate-800 bg-[#0d0d11]">
 
-        <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8">
+            {/* Profile Header */}
+            <div className="border-b border-slate-800 p-6 sm:p-8">
 
-            <div className="flex items-center gap-6">
+                <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
 
-                <div className="w-24 h-24 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 flex items-center justify-center text-4xl font-bold">
-                    U
-                </div>
+                    {/* Avatar */}
+                    <div className="flex h-24 w-24 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-rose-500 to-red-600 text-4xl font-bold text-white">
+                        U
+                    </div>
 
-                <div>
+                    {/* User Info */}
+                    <div>
+                        <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
 
-                    <h2 className="text-3xl font-bold">
-                        User Developer
-                    </h2>
+                            <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
+                                User Developer
+                            </h2>
 
-                    <p className="text-slate-400 mt-1">
-                        AI Code Review User
-                    </p>
+                            <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-rose-500/20 bg-rose-500/10 px-3 py-1 text-xs font-medium text-rose-300">
+                                <BadgeCheck size={14} />
+                                Active Account
+                            </span>
 
-                    <span className="inline-flex items-center gap-2 mt-3 px-3 py-1 rounded-full bg-green-500/10 text-green-400 text-sm">
-                        <BadgeCheck size={16} />
-                        Active Account
-                    </span>
+                        </div>
+
+                        <p className="mt-2 text-sm text-slate-500">
+                            AI Code Review User
+                        </p>
+                    </div>
 
                 </div>
 
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6 mt-10">
+            {/* Account Information */}
+            <div className="p-6 sm:p-8">
 
-                <div className="flex items-center gap-4 bg-slate-800 rounded-xl p-4">
-                    <Mail className="text-blue-500" />
-                    <div>
-                        <p className="text-slate-400 text-sm">Email</p>
-                        <p>user@example.com</p>
-                    </div>
-                </div>
-
-                <div className="flex items-center gap-4 bg-slate-800 rounded-xl p-4">
-                    <User className="text-blue-500" />
-                    <div>
-                        <p className="text-slate-400 text-sm">Account Type</p>
-                        <p>Developer</p>
-                    </div>
-                </div>
-
-                <div className="flex items-center gap-4 bg-slate-800 rounded-xl p-4">
-                    <Calendar className="text-blue-500" />
-                    <div>
-                        <p className="text-slate-400 text-sm">Joined</p>
-                        <p>August 2026</p>
-                    </div>
-                </div>
-
-                <div className="flex items-center gap-4 bg-slate-800 rounded-xl p-4">
-                    <ShieldCheck className="text-blue-500" />
-                    <div>
-                        <p className="text-slate-400 text-sm">AI Reviewer</p>
-                        <p>Enabled</p>
-                    </div>
-                </div>
-
-            </div>
-
-            <div className="grid grid-cols-2 gap-6 mt-10">
-
-                <div className="bg-slate-800 rounded-xl p-6 text-center">
-
-                    <FileCode2 className="mx-auto text-blue-500 mb-3" />
-
-                    <h3 className="text-3xl font-bold">
-                        ∞
+                <div className="mb-5">
+                    <h3 className="text-lg font-semibold">
+                        Account Information
                     </h3>
 
-                    <p className="text-slate-400">
-                        Reviews Supported
+                    <p className="mt-1 text-sm text-slate-500">
+                        Your CodePilot-AI account details.
                     </p>
+                </div>
+
+                <div className="grid gap-4 md:grid-cols-2">
+
+                    {/* Email */}
+                    <div className="flex items-center gap-4 rounded-2xl border border-slate-800 bg-[#09090c] p-4">
+
+                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-rose-500/20 bg-rose-500/10 text-rose-400">
+                            <Mail size={19} />
+                        </div>
+
+                        <div className="min-w-0">
+                            <p className="text-xs font-medium uppercase tracking-wide text-slate-600">
+                                Email
+                            </p>
+
+                            <p className="mt-1 truncate text-sm text-slate-200">
+                                user@example.com
+                            </p>
+                        </div>
+
+                    </div>
+
+                    {/* Account Type */}
+                    <div className="flex items-center gap-4 rounded-2xl border border-slate-800 bg-[#09090c] p-4">
+
+                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-red-500/20 bg-red-500/10 text-red-400">
+                            <User size={19} />
+                        </div>
+
+                        <div>
+                            <p className="text-xs font-medium uppercase tracking-wide text-slate-600">
+                                Account Type
+                            </p>
+
+                            <p className="mt-1 text-sm text-slate-200">
+                                Developer
+                            </p>
+                        </div>
+
+                    </div>
+
+                    {/* Joined */}
+                    <div className="flex items-center gap-4 rounded-2xl border border-slate-800 bg-[#09090c] p-4">
+
+                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-pink-500/20 bg-pink-500/10 text-pink-400">
+                            <Calendar size={19} />
+                        </div>
+
+                        <div>
+                            <p className="text-xs font-medium uppercase tracking-wide text-slate-600">
+                                Joined
+                            </p>
+
+                            <p className="mt-1 text-sm text-slate-200">
+                                August 2026
+                            </p>
+                        </div>
+
+                    </div>
+
+                    {/* AI Reviewer */}
+                    <div className="flex items-center gap-4 rounded-2xl border border-slate-800 bg-[#09090c] p-4">
+
+                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-rose-500/20 bg-rose-500/10 text-rose-400">
+                            <ShieldCheck size={19} />
+                        </div>
+
+                        <div>
+                            <p className="text-xs font-medium uppercase tracking-wide text-slate-600">
+                                AI Reviewer
+                            </p>
+
+                            <p className="mt-1 flex items-center gap-2 text-sm text-slate-200">
+                                Enabled
+                                <span className="h-1.5 w-1.5 rounded-full bg-rose-500" />
+                            </p>
+                        </div>
+
+                    </div>
 
                 </div>
 
-                <div className="bg-slate-800 rounded-xl p-6 text-center">
+                {/* Capabilities */}
+                <div className="mt-10">
 
-                    <ShieldCheck className="mx-auto text-green-500 mb-3" />
+                    <div className="mb-5">
+                        <h3 className="text-lg font-semibold">
+                            CodePilot Capabilities
+                        </h3>
 
-                    <h3 className="text-3xl font-bold">
-                        AI
-                    </h3>
+                        <p className="mt-1 text-sm text-slate-500">
+                            Your available AI-powered development tools.
+                        </p>
+                    </div>
 
-                    <p className="text-slate-400">
-                        Powered Analysis
-                    </p>
+                    <div className="grid gap-4 sm:grid-cols-2">
+
+                        {/* Reviews */}
+                        <div className="rounded-2xl border border-slate-800 bg-[#09090c] p-6 text-center">
+
+                            <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-rose-500/20 bg-rose-500/10 text-rose-400">
+                                <FileCode2 size={21} />
+                            </div>
+
+                            <h3 className="text-3xl font-bold">
+                                ∞
+                            </h3>
+
+                            <p className="mt-1 text-sm text-slate-500">
+                                Reviews Supported
+                            </p>
+
+                        </div>
+
+                        {/* AI Analysis */}
+                        <div className="rounded-2xl border border-slate-800 bg-[#09090c] p-6 text-center">
+
+                            <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-red-500/20 bg-red-500/10 text-red-400">
+                                <ShieldCheck size={21} />
+                            </div>
+
+                            <h3 className="text-3xl font-bold">
+                                AI
+                            </h3>
+
+                            <p className="mt-1 text-sm text-slate-500">
+                                Powered Analysis
+                            </p>
+
+                        </div>
+
+                    </div>
 
                 </div>
 
             </div>
 
         </div>
-
     );
-
 }
