@@ -3,19 +3,40 @@ node_modules/
 
 # Python virtual environment
 backend/venv/
+
+# Python cache
 __pycache__/
 *.py[cod]
 *$py.class
 
 # Vite
-client/.vite
-client/.vite-temp
+client/.vite/
+client/.vite-temp/
+client/dist/
+
+# Environment files / secrets
+.env
+.env.local
+.env.*.local
+backend/.env
+backend/.env.local
+
+# Keep example environment files
+!.env.example
+!backend/.env.example
+!client/.env.example
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# IDE
+.vscode/
+.idea/
 
 # OS
 .DS_Store
 Thumbs.db
-
-# Env files
-.env
-.env.local
-.env.*.local
+desktop.ini
