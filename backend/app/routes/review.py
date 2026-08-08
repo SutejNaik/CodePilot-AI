@@ -1,11 +1,15 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends, HTTPException
 from datetime import datetime
 
 from bson import ObjectId
+from bson.errors import InvalidId
+
 from app.database.mongodb import get_database
 from app.models.review import ReviewCreate
 from app.services.ai_reviewer import analyze_code
 from app.services.chat_ai import chat_with_code
+from app.utils.auth import get_current_user
+
 
 router = APIRouter(
     prefix="/review",
@@ -16,9 +20,15 @@ router = APIRouter(
 db = get_database()
 
 
+# ============================================================
+# CREATE REVIEW
+# ============================================================
 
 @router.post("/")
-def review_code(data: ReviewCreate):
+def review_code(
+    data: ReviewCreate,
+    current_user=Depends(get_current_user)
+):
 
     result = analyze_code(
         data.language,
@@ -26,28 +36,72 @@ def review_code(data: ReviewCreate):
     )
 
     review_document = {
+
+        # IMPORTANT:
+        # Associate this review with the logged-in user
+        "user_email": current_user["email"],
+
         "language": data.language,
         "code": data.code,
-        "summary": result.get("summary", ""),
-        "score": result.get("score", 100),
-        "issues": result.get("issues", []),
-        "suggestions": result.get("suggestions", []),
-        "improved_code": result.get("improved_code", data.code),
-        "created_at": datetime.now()
+
+        "summary": result.get(
+            "summary",
+            ""
+        ),
+
+        "score": result.get(
+            "score",
+            100
+        ),
+
+        "issues": result.get(
+            "issues",
+            []
+        ),
+
+        "suggestions": result.get(
+            "suggestions",
+            []
+        ),
+
+        "improved_code": result.get(
+            "improved_code",
+            data.code
+        ),
+
+        "created_at": datetime.utcnow()
     }
 
-    # Debug - verify what is being saved
-    print("\n========== SAVING TO MONGODB ==========")
-    print(review_document)
-    print("=======================================\n")
 
-    db.reviews.insert_one(review_document)
+    print("\n========== SAVING REVIEW ==========")
+    print(
+        "User:",
+        current_user["email"]
+    )
+    print(
+        "Language:",
+        data.language
+    )
+    print("===================================\n")
+
+
+    db.reviews.insert_one(
+        review_document
+    )
+
 
     return result
 
 
+# ============================================================
+# AI CHAT
+# ============================================================
+
 @router.post("/chat")
-def chat(request: dict):
+def chat(
+    request: dict,
+    current_user=Depends(get_current_user)
+):
 
     answer = chat_with_code(
         language=request["language"],
@@ -60,37 +114,71 @@ def chat(request: dict):
         "answer": answer
     }
 
+
+# ============================================================
+# HISTORY
+# ============================================================
+
 @router.get("/history")
-def get_history():
+def get_history(
+    current_user=Depends(get_current_user)
+):
 
     reviews = list(
         db.reviews.find(
-            {},
             {
-                "code": 0
+                "user_email": current_user["email"]
+            },
+            {
+                "code": 0,
+                "improved_code": 0
             }
+        ).sort(
+            "created_at",
+            -1
         )
     )
 
 
     for review in reviews:
-        review["_id"] = str(review["_id"])
+        review["_id"] = str(
+            review["_id"]
+        )
 
 
     return reviews
 
 
-
+# ============================================================
+# STATS
+# ============================================================
 
 @router.get("/stats")
-def get_stats():
+def get_stats(
+    current_user=Depends(get_current_user)
+):
 
-    total_reviews = db.reviews.count_documents({})
+    user_filter = {
+        "user_email": current_user["email"]
+    }
 
+
+    # --------------------------------------------------------
+    # TOTAL REVIEWS
+    # --------------------------------------------------------
+
+    total_reviews = db.reviews.count_documents(
+        user_filter
+    )
+
+
+    # --------------------------------------------------------
+    # SCORES
+    # --------------------------------------------------------
 
     scores = list(
         db.reviews.find(
-            {},
+            user_filter,
             {
                 "score": 1,
                 "_id": 0
@@ -100,18 +188,27 @@ def get_stats():
 
 
     if scores:
-        average_score = sum(
-            item["score"] for item in scores
-        ) / len(scores)
+
+        average_score = (
+            sum(
+                item.get("score", 0)
+                for item in scores
+            )
+            / len(scores)
+        )
 
     else:
+
         average_score = 0
 
 
+    # --------------------------------------------------------
+    # ISSUES + LANGUAGES
+    # --------------------------------------------------------
 
     all_reviews = list(
         db.reviews.find(
-            {},
+            user_filter,
             {
                 "issues": 1,
                 "language": 1,
@@ -122,73 +219,135 @@ def get_stats():
 
 
     total_issues = sum(
-        len(review.get("issues", []))
+        len(
+            review.get(
+                "issues",
+                []
+            )
+        )
         for review in all_reviews
     )
 
 
-    languages = len(
-        set(
-            review.get("language")
-            for review in all_reviews
+    language_set = set()
+
+    for review in all_reviews:
+
+        language = review.get(
+            "language"
         )
+
+        if language:
+            language_set.add(
+                language
+            )
+
+
+    languages = len(
+        language_set
     )
 
 
     return {
 
-        "total_reviews": total_reviews,
+        "total_reviews":
+            total_reviews,
 
-        "average_score": round(average_score),
+        "average_score":
+            round(average_score),
 
-        "security_issues": total_issues,
+        "security_issues":
+            total_issues,
 
-        "languages": languages
+        "languages":
+            languages
 
     }
 
 
-
+# ============================================================
+# RECENT REVIEWS
+# ============================================================
 
 @router.get("/recent")
-def get_recent_reviews():
+def get_recent_reviews(
+    current_user=Depends(get_current_user)
+):
 
     reviews = list(
         db.reviews.find(
-            {},
             {
-                "code": 0
+                "user_email":
+                    current_user["email"]
+            },
+            {
+                "code": 0,
+                "improved_code": 0
             }
         )
-        .sort("created_at", -1)
+        .sort(
+            "created_at",
+            -1
+        )
         .limit(3)
     )
 
 
     for review in reviews:
-        review["_id"] = str(review["_id"])
+
+        review["_id"] = str(
+            review["_id"]
+        )
 
 
     return reviews
 
 
-
+# ============================================================
+# SINGLE REVIEW
+# ============================================================
 
 @router.get("/{id}")
-def get_review(id: str):
+def get_review(
+    id: str,
+    current_user=Depends(get_current_user)
+):
 
-    review = db.reviews.find_one({
-        "_id": ObjectId(id)
-    })
+    try:
+
+        object_id = ObjectId(id)
+
+    except InvalidId:
+
+        raise HTTPException(
+            status_code=400,
+            detail="Invalid review ID"
+        )
+
+
+    review = db.reviews.find_one(
+        {
+            "_id": object_id,
+
+            # VERY IMPORTANT:
+            # User can only access their own review
+            "user_email":
+                current_user["email"]
+        }
+    )
 
 
     if not review:
-        return {
-            "message": "Review not found"
-        }
+
+        raise HTTPException(
+            status_code=404,
+            detail="Review not found"
+        )
 
 
-    review["_id"] = str(review["_id"])
+    review["_id"] = str(
+        review["_id"]
+    )
 
 
-    return review
+    return reviewpro

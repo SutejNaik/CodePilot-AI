@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import Footer from "../components/layout/Footer";
 import Button from "../components/common/Button";
@@ -5,7 +6,7 @@ import Hero from "../components/home/Hero";
 
 export default function Home() {
     return (
-        <div className="relative min-h-screen overflow-hidden bg-[#050505] text-white">
+        <div className="min-h-screen">
 
             {/* =====================================================
                 GLOBAL BACKGROUND
@@ -31,6 +32,9 @@ export default function Home() {
             ====================================================== */}
 
             <div className="relative z-10">
+
+
+
 
                 {/* =====================================================
                     HERO
@@ -82,9 +86,7 @@ export default function Home() {
                         </div>
 
 
-                        {/* =================================================
-                            FEATURE CARDS
-                        ================================================== */}
+                        {/* FEATURE CARDS */}
 
                         <div className="mt-16 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
 
@@ -123,14 +125,9 @@ export default function Home() {
                                     }}
                                 >
 
-                                    {/* ALWAYS-ON OUTER GLOW */}
-
                                     <div className="absolute -inset-4 rounded-[30px] bg-red-600/25 blur-3xl opacity-100" />
 
                                     <div className="absolute -inset-1 rounded-[30px] bg-red-500/[0.08] blur-xl opacity-100" />
-
-
-                                    {/* BLACK CARD */}
 
                                     <div
                                         className="
@@ -146,15 +143,9 @@ export default function Home() {
                                         "
                                     >
 
-                                        {/* Permanent top line */}
-
                                         <div className="pointer-events-none absolute left-0 right-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-red-500 to-transparent shadow-[0_0_18px_rgba(239,68,68,0.8)]" />
 
-
-                                        {/* Permanent corner glow */}
-
                                         <div className="pointer-events-none absolute -right-20 -top-20 h-48 w-48 rounded-full bg-red-600/15 blur-3xl" />
-
 
                                         <div className="relative flex items-center justify-between">
 
@@ -176,23 +167,19 @@ export default function Home() {
                                                 {feature.icon}
                                             </div>
 
-
                                             <span className="font-mono text-xs text-red-500/60">
                                                 {feature.number}
                                             </span>
 
                                         </div>
 
-
                                         <h3 className="relative mt-7 text-xl font-semibold text-white">
                                             {feature.title}
                                         </h3>
 
-
                                         <p className="relative mt-3 text-sm leading-6 text-zinc-300">
                                             {feature.text}
                                         </p>
-
 
                                         <div className="relative mt-6 h-px w-full bg-gradient-to-r from-red-500/50 via-red-500/20 to-transparent shadow-[0_0_10px_rgba(239,68,68,0.3)]" />
 
@@ -217,14 +204,11 @@ export default function Home() {
 
                     <div className="mx-auto grid max-w-7xl items-center gap-16 lg:grid-cols-2">
 
-                        {/* LEFT */}
-
                         <div className="cp-fade-up">
 
                             <span className="font-mono text-xs tracking-[0.2em] text-red-500 drop-shadow-[0_0_12px_rgba(239,68,68,0.3)]">
                                 / CODEPILOT_ENGINE
                             </span>
-
 
                             <h2 className="mt-5 text-4xl font-bold tracking-tight sm:text-5xl">
 
@@ -242,13 +226,11 @@ export default function Home() {
 
                             </h2>
 
-
                             <p className="mt-6 max-w-xl text-lg leading-8 text-zinc-300">
                                 CodePilot doesn't simply throw errors at you. It
                                 explains the issue, identifies its impact and gives
                                 you a practical way to fix it.
                             </p>
-
 
                             <div className="mt-8 space-y-4">
 
@@ -309,8 +291,6 @@ export default function Home() {
                                 "
                             >
 
-                                {/* Header */}
-
                                 <div className="flex items-center justify-between border-b border-white/[0.08] bg-white/[0.025] px-5 py-4">
 
                                     <div className="flex gap-2">
@@ -330,8 +310,6 @@ export default function Home() {
 
                                 </div>
 
-
-                                {/* Code */}
 
                                 <div className="overflow-hidden p-6 font-mono text-sm leading-7">
 
@@ -378,8 +356,6 @@ export default function Home() {
                                     </div>
 
 
-                                    {/* AI FINDING */}
-
                                     <div className="mt-6 rounded-2xl border border-red-500/20 bg-red-500/[0.04] p-4 shadow-[inset_0_0_30px_rgba(239,68,68,0.04)]">
 
                                         <div className="flex items-center gap-2 text-red-400">
@@ -421,8 +397,6 @@ export default function Home() {
 
                     <div className="mx-auto max-w-7xl">
 
-                        {/* Heading */}
-
                         <div className="mx-auto max-w-3xl text-center cp-fade-up">
 
                             <span className="font-mono text-xs tracking-[0.2em] text-red-400">
@@ -449,13 +423,7 @@ export default function Home() {
                         </div>
 
 
-                        {/* =================================================
-                            WORKFLOW CARDS
-                        ================================================== */}
-
                         <div className="relative mt-20">
-
-                            {/* Connecting line */}
 
                             <div className="absolute left-[16%] right-[16%] top-[68px] hidden h-px bg-gradient-to-r from-transparent via-red-500/50 to-transparent md:block" />
 
@@ -490,16 +458,9 @@ export default function Home() {
                                         }}
                                     >
 
-                                        {/* =================================================
-                                            ALWAYS-ON OUTER GLOW
-                                        ================================================== */}
-
                                         <div className="absolute -inset-5 rounded-[34px] bg-red-600/30 blur-2xl opacity-100" />
 
                                         <div className="absolute -inset-2 rounded-[30px] bg-red-500/10 blur-xl opacity-100" />
-
-
-                                        {/* BLACK CARD */}
 
                                         <div
                                             className="
@@ -516,19 +477,11 @@ export default function Home() {
                                             "
                                         >
 
-                                            {/* ALWAYS-ON TOP RED LIGHT */}
-
                                             <div className="absolute left-0 right-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-red-500 to-transparent shadow-[0_0_18px_rgba(239,68,68,0.9)]" />
-
-
-                                            {/* ALWAYS-ON CORNER GLOW */}
 
                                             <div className="absolute -right-20 -top-20 h-48 w-48 rounded-full bg-red-600/15 blur-3xl" />
 
                                             <div className="absolute -bottom-24 -left-20 h-48 w-48 rounded-full bg-red-600/10 blur-3xl" />
-
-
-                                            {/* ICON */}
 
                                             <div className="relative flex items-center justify-between">
 
@@ -558,9 +511,6 @@ export default function Home() {
 
                                             </div>
 
-
-                                            {/* CONTENT */}
-
                                             <div className="relative mt-10">
 
                                                 <h3 className="text-2xl font-semibold text-white">
@@ -572,9 +522,6 @@ export default function Home() {
                                                 </p>
 
                                             </div>
-
-
-                                            {/* ALWAYS-ON BOTTOM LINE */}
 
                                             <div className="absolute bottom-7 left-8 right-8">
 
@@ -593,20 +540,13 @@ export default function Home() {
                         </div>
 
 
-                        {/* =================================================
-                            STATS
-                        ================================================== */}
+                        {/* STATS */}
 
                         <div className="relative mt-28 cp-fade-up">
-
-                            {/* ALWAYS-ON STATS GLOW */}
 
                             <div className="absolute -inset-8 rounded-[38px] bg-red-600/15 blur-3xl opacity-100" />
 
                             <div className="absolute -inset-2 rounded-[32px] bg-red-500/[0.06] blur-xl" />
-
-
-                            {/* MAIN PANEL */}
 
                             <div
                                 className="
@@ -618,12 +558,7 @@ export default function Home() {
                                 "
                             >
 
-                                {/* TOP RED LINE */}
-
                                 <div className="absolute left-8 right-8 top-0 h-px bg-gradient-to-r from-transparent via-red-500 to-transparent shadow-[0_0_18px_rgba(239,68,68,0.8)]" />
-
-
-                                {/* HEADER */}
 
                                 <div className="relative border-b border-white/[0.10] px-8 py-5">
 
@@ -653,8 +588,6 @@ export default function Home() {
 
                                 </div>
 
-
-                                {/* STATS */}
 
                                 <div className="grid md:grid-cols-3">
 
@@ -691,15 +624,9 @@ export default function Home() {
                                             `}
                                         >
 
-                                            {/* Permanent glow */}
-
                                             <div className="absolute left-1/2 top-1/2 h-40 w-40 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-600/[0.06] blur-3xl" />
 
-
-                                            {/* Hover overlay */}
-
                                             <div className="absolute inset-0 bg-gradient-to-b from-red-500/[0.06] via-transparent to-transparent opacity-0 transition duration-500 group-hover:opacity-100" />
-
 
                                             <div className="relative">
 
@@ -716,9 +643,6 @@ export default function Home() {
                                                     {stat.value}
                                                 </div>
 
-
-                                                {/* Divider */}
-
                                                 <div className="mx-auto mt-5 flex items-center justify-center gap-2">
 
                                                     <div className="h-px w-8 bg-gradient-to-r from-transparent to-red-500/50" />
@@ -728,7 +652,6 @@ export default function Home() {
                                                     <div className="h-px w-8 bg-gradient-to-l from-transparent to-red-500/50" />
 
                                                 </div>
-
 
                                                 <h3 className="mt-5 text-base font-medium text-zinc-100">
                                                     {stat.title}
@@ -740,9 +663,6 @@ export default function Home() {
 
                                             </div>
 
-
-                                            {/* Bottom red light */}
-
                                             <div className="absolute bottom-0 left-10 right-10 h-px bg-gradient-to-r from-transparent via-red-500/30 to-transparent shadow-[0_0_10px_rgba(239,68,68,0.25)]" />
 
                                         </div>
@@ -750,9 +670,6 @@ export default function Home() {
                                     ))}
 
                                 </div>
-
-
-                                {/* BOTTOM RED LINE */}
 
                                 <div className="absolute bottom-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-red-500/50 to-transparent shadow-[0_0_15px_rgba(239,68,68,0.5)]" />
 
@@ -771,19 +688,11 @@ export default function Home() {
 
                 <section className="relative px-6 py-32">
 
-                    {/* Large ambient glow */}
-
                     <div className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-600/10 blur-[140px]" />
-
 
                     <div className="relative mx-auto max-w-5xl">
 
-                        {/* OUTER GLOW */}
-
                         <div className="absolute -inset-[2px] rounded-[34px] bg-gradient-to-r from-red-600/20 via-red-500/60 to-red-600/20 blur-sm opacity-90" />
-
-
-                        {/* CTA */}
 
                         <div
                             className="
@@ -796,29 +705,15 @@ export default function Home() {
                             "
                         >
 
-                            {/* Inner border */}
-
                             <div className="pointer-events-none absolute inset-3 rounded-[26px] border border-red-500/[0.08]" />
-
-
-                            {/* TOP LINE */}
 
                             <div className="absolute left-10 right-10 top-0 h-px bg-gradient-to-r from-transparent via-red-500 to-transparent shadow-[0_0_18px_rgba(239,68,68,0.8)]" />
 
-
-                            {/* BOTTOM LINE */}
-
                             <div className="absolute bottom-0 left-10 right-10 h-px bg-gradient-to-r from-transparent via-red-500/60 to-transparent shadow-[0_0_15px_rgba(239,68,68,0.5)]" />
-
-
-                            {/* SIDE LIGHTS */}
 
                             <div className="absolute left-0 top-1/2 h-32 w-px -translate-y-1/2 bg-gradient-to-b from-transparent via-red-500/70 to-transparent shadow-[0_0_15px_rgba(239,68,68,0.6)]" />
 
                             <div className="absolute right-0 top-1/2 h-32 w-px -translate-y-1/2 bg-gradient-to-b from-transparent via-red-500/70 to-transparent shadow-[0_0_15px_rgba(239,68,68,0.6)]" />
-
-
-                            {/* CORNER ACCENTS */}
 
                             <div className="absolute left-6 top-6 h-8 w-8 border-l border-t border-red-500/40" />
 
@@ -828,17 +723,9 @@ export default function Home() {
 
                             <div className="absolute bottom-6 right-6 h-8 w-8 border-b border-r border-red-500/40" />
 
-
-                            {/* INTERNAL GLOW */}
-
                             <div className="pointer-events-none absolute left-1/2 top-1/2 h-[350px] w-[650px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-600/[0.07] blur-[100px]" />
 
-
-                            {/* CONTENT */}
-
                             <div className="relative z-10">
-
-                                {/* STATUS */}
 
                                 <div className="mx-auto inline-flex items-center gap-3 rounded-full border border-red-500/20 bg-red-500/[0.05] px-4 py-2 shadow-[0_0_25px_rgba(239,68,68,0.08)]">
 
@@ -849,9 +736,6 @@ export default function Home() {
                                     </span>
 
                                 </div>
-
-
-                                {/* HEADING */}
 
                                 <h2 className="mt-7 text-4xl font-bold tracking-tight sm:text-5xl">
 
@@ -865,9 +749,6 @@ export default function Home() {
 
                                 </h2>
 
-
-                                {/* DIVIDER */}
-
                                 <div className="mx-auto mt-7 flex items-center justify-center gap-3">
 
                                     <div className="h-px w-16 bg-gradient-to-r from-transparent to-red-500/50" />
@@ -878,16 +759,10 @@ export default function Home() {
 
                                 </div>
 
-
-                                {/* DESCRIPTION */}
-
                                 <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-zinc-300">
                                     Let CodePilot analyze your code and uncover issues
                                     before they reach production.
                                 </p>
-
-
-                                {/* BUTTON */}
 
                                 <div className="mt-10 flex justify-center">
 
@@ -898,32 +773,22 @@ export default function Home() {
                                                 group relative inline-flex
                                                 items-center justify-center gap-3
                                                 overflow-hidden rounded-xl
-
                                                 border border-red-400/50
-
                                                 bg-gradient-to-r
                                                 from-red-700
                                                 via-red-500
                                                 to-red-700
-
                                                 px-8 py-4
-
                                                 text-sm font-semibold text-white
-
                                                 shadow-[0_0_30px_rgba(239,68,68,0.30)]
-
                                                 transition-all duration-300
-
                                                 hover:-translate-y-1
                                                 hover:border-red-300/70
                                                 hover:shadow-[0_0_50px_rgba(239,68,68,0.55)]
-
                                                 active:translate-y-0
                                                 active:scale-[0.98]
                                             "
                                         >
-
-                                            {/* SHINE */}
 
                                             <span
                                                 className="
@@ -952,9 +817,6 @@ export default function Home() {
                                     </Link>
 
                                 </div>
-
-
-                                {/* METADATA */}
 
                                 <div className="mt-8 flex flex-wrap items-center justify-center gap-4 font-mono text-[10px] tracking-[0.15em] text-zinc-500 sm:gap-6">
 

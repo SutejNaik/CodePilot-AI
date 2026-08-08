@@ -18,7 +18,6 @@ import {
     Gauge,
     Zap,
     ArrowRight,
-    MessageCircle,
 } from "lucide-react";
 
 import LanguageSelector from "../components/review/LanguageSelector";
@@ -612,54 +611,6 @@ export default function Review() {
 
                             </div>
 
-                        </div>
-                    </Reveal>
-
-                </section>
-
-
-                {/* AI CHAT — promoted above Capabilities and given a featured treatment */}
-
-                <section className="mt-20 max-w-5xl mx-auto">
-
-                    <Reveal>
-                        {/* gradient-border wrapper: outer div carries the gradient, inner div is the real background */}
-                        <div className="relative rounded-[26px] bg-gradient-to-b from-red-500/25 via-red-500/[0.06] to-transparent p-px overflow-hidden">
-
-                            <div className="absolute -top-24 right-0 w-72 h-72 rounded-full bg-red-500/[0.08] blur-[100px] pointer-events-none" />
-
-                            <div className="relative rounded-[25px] bg-[#090909] p-6 sm:p-8">
-
-                                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
-
-                                    <div className="flex items-center gap-4">
-
-                                        <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-red-500 to-rose-800 shadow-[0_8px_20px_-8px_rgba(239,68,68,0.5)] flex items-center justify-center flex-none">
-                                            <MessageCircle className="w-5 h-5 text-white" />
-                                        </div>
-
-                                        <div>
-                                            <div className="flex items-center gap-2">
-                                                <h2 className="text-xl font-semibold">
-                                                    Ask CodePilot about your code
-                                                </h2>
-                                                <span className="inline-flex items-center gap-1.5 text-[9px] font-mono uppercase tracking-wider text-red-300 border border-red-500/25 bg-red-500/10 px-2 py-0.5 rounded-full">
-                                                    <span className="w-1 h-1 rounded-full bg-red-400 animate-pulse" />
-                                                    Live
-                                                </span>
-                                            </div>
-                                            <p className="text-xs text-zinc-500 mt-1">
-                                                Follow-up questions, deeper explanations, and fixes — right after your review.
-                                            </p>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                                <AIChat />
-
-                            </div>
                         </div>
                     </Reveal>
 

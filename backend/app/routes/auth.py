@@ -1,4 +1,5 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
+
 from app.models.user import UserCreate, UserLogin
 from app.database.mongodb import get_database
 from app.utils.security import (
@@ -6,6 +7,7 @@ from app.utils.security import (
     verify_password,
     create_token
 )
+from app.utils.auth import get_current_user
 
 
 router = APIRouter(
@@ -17,6 +19,10 @@ router = APIRouter(
 db = get_database()
 
 
+# ============================================================
+# REGISTER
+# ============================================================
+
 @router.post("/register")
 def register(user: UserCreate):
 
@@ -24,33 +30,30 @@ def register(user: UserCreate):
         "email": user.email
     })
 
-
     if existing_user:
         raise HTTPException(
             status_code=400,
             detail="Email already registered"
         )
 
-
     hashed_password = hash_password(
         user.password
     )
 
-
     db.users.insert_one({
-
         "name": user.name,
         "email": user.email,
         "password": hashed_password
-
     })
-
 
     return {
         "message": "User registered successfully"
     }
 
 
+# ============================================================
+# LOGIN
+# ============================================================
 
 @router.post("/login")
 def login(user: UserLogin):
@@ -59,13 +62,11 @@ def login(user: UserLogin):
         "email": user.email
     })
 
-
     if not existing_user:
         raise HTTPException(
             status_code=404,
             detail="User not found"
         )
-
 
     if not verify_password(
         user.password,
@@ -76,17 +77,40 @@ def login(user: UserLogin):
             detail="Invalid password"
         )
 
-
     token = create_token({
-
-        "email": user.email
-
+        "email": existing_user["email"]
     })
 
-
     return {
-
         "access_token": token,
         "token_type": "bearer"
-
     }
+
+
+# ============================================================
+# CURRENT USER
+# ============================================================
+
+@router.get("/me")
+def get_me(
+    current_user=Depends(get_current_user)
+):
+
+    user = db.users.find_one(
+        {
+            "email": current_user["email"]
+        },
+        {
+            "password": 0
+        }
+    )
+
+    if not user:
+        raise HTTPException(
+            status_code=404,
+            detail="User not found"
+        )
+
+    user["_id"] = str(user["_id"])
+
+    return user
