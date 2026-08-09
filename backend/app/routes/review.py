@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from datetime import datetime
-
+from pydantic import BaseModel
 from bson import ObjectId
 from bson.errors import InvalidId
 
@@ -37,8 +37,6 @@ def review_code(
 
     review_document = {
 
-        # IMPORTANT:
-        # Associate this review with the logged-in user
         "user_email": current_user["email"],
 
         "language": data.language,
@@ -97,23 +95,54 @@ def review_code(
 # AI CHAT
 # ============================================================
 
+
+class ChatRequest(BaseModel):
+    language: str
+    original_code: str
+    improved_code: str
+    question: str
+
+
 @router.post("/chat")
 def chat(
-    request: dict,
+    request: ChatRequest,
     current_user=Depends(get_current_user)
 ):
 
-    answer = chat_with_code(
-        language=request["language"],
-        original_code=request["original_code"],
-        improved_code=request["improved_code"],
-        question=request["question"]
-    )
+    print("\n========== CHAT REQUEST ==========")
+    print("Language:", request.language)
+    print("Original code length:", len(request.original_code))
+    print("Improved code length:", len(request.improved_code))
+    print("Question:", request.question)
+    print("==================================\n")
 
-    return {
-        "answer": answer
-    }
+    try:
 
+        answer = chat_with_code(
+            language=request.language,
+            original_code=request.original_code,
+            improved_code=request.improved_code,
+            question=request.question
+        )
+
+        print("\n========== CHAT RESPONSE ==========")
+        print(answer)
+        print("===================================\n")
+
+        return {
+            "answer": answer
+        }
+
+    except Exception as e:
+
+        print("\n========== CHAT ROUTE ERROR ==========")
+        print(e)
+        print("======================================\n")
+
+        raise HTTPException(
+            status_code=500,
+            detail="AI chat service failed."
+        )
 
 # ============================================================
 # HISTORY
@@ -163,18 +192,10 @@ def get_stats(
     }
 
 
-    # --------------------------------------------------------
-    # TOTAL REVIEWS
-    # --------------------------------------------------------
-
     total_reviews = db.reviews.count_documents(
         user_filter
     )
 
-
-    # --------------------------------------------------------
-    # SCORES
-    # --------------------------------------------------------
 
     scores = list(
         db.reviews.find(
@@ -201,10 +222,6 @@ def get_stats(
 
         average_score = 0
 
-
-    # --------------------------------------------------------
-    # ISSUES + LANGUAGES
-    # --------------------------------------------------------
 
     all_reviews = list(
         db.reviews.find(
@@ -328,9 +345,6 @@ def get_review(
     review = db.reviews.find_one(
         {
             "_id": object_id,
-
-            # VERY IMPORTANT:
-            # User can only access their own review
             "user_email":
                 current_user["email"]
         }
@@ -350,4 +364,4 @@ def get_review(
     )
 
 
-    return reviewpro
+    return review

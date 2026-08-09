@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import api from "../../api/axios";
@@ -12,9 +13,28 @@ export default function RecentReviews() {
     async function fetchRecentReviews() {
         try {
             const response = await api.get("/review/recent");
-            setReviews(response.data);
+
+            // Make sure reviews is always an array.
+            // Prevents .map() from crashing if the API returns
+            // an object or unexpected response.
+            const data = response.data;
+
+            if (Array.isArray(data)) {
+                setReviews(data);
+            } else {
+                setReviews([]);
+                console.error(
+                    "Unexpected /review/recent response:",
+                    data
+                );
+            }
         } catch (error) {
-            console.error(error);
+            console.error(
+                "Failed to fetch recent reviews:",
+                error
+            );
+
+            setReviews([]);
         }
     }
 
@@ -60,9 +80,11 @@ export default function RecentReviews() {
                                     </p>
 
                                     <p className="mt-1 text-xs text-zinc-600">
-                                        {new Date(
-                                            review.created_at
-                                        ).toLocaleString()}
+                                        {review.created_at
+                                            ? new Date(
+                                                review.created_at
+                                            ).toLocaleString()
+                                            : "Unknown date"}
                                     </p>
                                 </div>
 

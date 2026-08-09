@@ -216,7 +216,7 @@ export default function Home() {
                                     Don't just find
                                 </span>
 
-                                <span className="block text-zinc-400">
+                                <span className="block text-red-400">
                                     the problem.
                                 </span>
 
@@ -226,7 +226,7 @@ export default function Home() {
 
                             </h2>
 
-                            <p className="mt-6 max-w-xl text-lg leading-8 text-zinc-300">
+                            <p className="mt-6 max-w-xl text-lg leading-8 text-zinc-200">
                                 CodePilot doesn't simply throw errors at you. It
                                 explains the issue, identifies its impact and gives
                                 you a practical way to fix it.
@@ -263,7 +263,7 @@ export default function Home() {
                                             ✓
                                         </div>
 
-                                        <span className="text-sm text-zinc-300 transition group-hover:text-white">
+                                        <span className="text-sm text-zinc-200 transition group-hover:text-white">
                                             {item}
                                         </span>
 
@@ -299,7 +299,7 @@ export default function Home() {
                                         <span className="h-3 w-3 rounded-full bg-green-500/70" />
                                     </div>
 
-                                    <span className="font-mono text-xs text-zinc-500">
+                                    <span className="font-mono text-xs text-zinc-300">
                                         review · cart.js
                                     </span>
 
@@ -313,14 +313,14 @@ export default function Home() {
 
                                 <div className="overflow-hidden p-6 font-mono text-sm leading-7">
 
-                                    <div className="text-zinc-600">
+                                    <div className="text-zinc-400">
                                         01
                                         <span className="ml-6 text-zinc-300">
                                             function calculateTotal(items) {"{"}
                                         </span>
                                     </div>
 
-                                    <div className="text-zinc-600">
+                                    <div className="text-zinc-400">
                                         02
                                         <span className="ml-6 text-zinc-300">
                                             {"  "}let total = 0;
@@ -370,7 +370,7 @@ export default function Home() {
 
                                         </div>
 
-                                        <p className="mt-2 text-xs leading-6 text-zinc-400">
+                                        <p className="mt-2 text-xs leading-6 text-zinc-300">
                                             Repeated iteration may impact performance
                                             for large collections. Consider using a
                                             more efficient aggregation strategy.
@@ -568,7 +568,7 @@ export default function Home() {
 
                                             <span className="h-2 w-2 animate-pulse rounded-full bg-red-500 shadow-[0_0_15px_rgba(239,68,68,0.9)]" />
 
-                                            <span className="font-mono text-xs tracking-[0.18em] text-zinc-300">
+                                            <span className="font-mono text-xs tracking-[0.18em] text-zinc-200">
                                                 CODEPILOT ENGINE
                                             </span>
 
@@ -657,7 +657,7 @@ export default function Home() {
                                                     {stat.title}
                                                 </h3>
 
-                                                <p className="mt-2 font-mono text-xs text-zinc-400">
+                                                <p className="mt-2 font-mono text-xs text-red-400">
                                                     {stat.description}
                                                 </p>
 
@@ -818,7 +818,7 @@ export default function Home() {
 
                                 </div>
 
-                                <div className="mt-8 flex flex-wrap items-center justify-center gap-4 font-mono text-[10px] tracking-[0.15em] text-zinc-500 sm:gap-6">
+                                <div className="mt-8 flex flex-wrap items-center justify-center gap-4 font-mono text-[10px] tracking-[0.15em] text-zinc-200 sm:gap-6">
 
                                     <span>AI POWERED</span>
 

@@ -3,7 +3,8 @@
 import { useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
-    Code2,
+    ArrowRight,
+    LogIn,
     LogOut,
 } from "lucide-react";
 
@@ -15,6 +16,9 @@ const ROBOT_IMAGE = "/images/Character.jpg";
 export default function Hero() {
     const spotlightRef = useRef(null);
     const navigate = useNavigate();
+    const isLoggedIn =
+        !!localStorage.getItem("token") ||
+        !!localStorage.getItem("access_token");
 
     const handleMouseMove = (e) => {
         const rect = e.currentTarget.getBoundingClientRect();
@@ -122,43 +126,118 @@ export default function Hero() {
                         LOGO
                     ================================================== */}
 
-                    <Link
-                        to="/"
-                        className="group flex items-center gap-3"
-                    >
+                    <Link to="/" className="flex items-center gap-3.5 group">
 
-                        {/* Logo icon */}
-                        <div
-                            className="
-                                flex h-11 w-11 items-center justify-center
-                                rounded-xl
-                                bg-gradient-to-br
-                                from-red-500
-                                to-red-700
-                                text-white
-                                shadow-[0_0_30px_rgba(239,68,68,0.35)]
-                                transition-all duration-300
-                                group-hover:scale-105
-                                group-hover:shadow-[0_0_40px_rgba(239,68,68,0.55)]
-                            "
-                        >
-                            <Code2
-                                size={24}
-                                strokeWidth={2.5}
-                            />
+                        {/* LARGE CODE ROCKET LOGO (NO CONTAINER) */}
+                        <div className="relative w-12 h-12 flex items-center justify-center">
+                            {/* Ambient Rocket Flame Glow */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-[#ff2a2a] via-[#ff5c38] to-transparent rounded-full blur-xl opacity-60 group-hover:opacity-100 group-hover:scale-125 transition-all duration-500" />
+
+                            {/* MAIN ROCKET SVG */}
+                            <svg
+                                className="w-12 h-12 relative z-10 transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-1 drop-shadow-[0_4px_20px_rgba(255,42,42,0.6)]"
+                                viewBox="0 0 36 36"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <defs>
+                                    {/* Metallic Body Gradient */}
+                                    <linearGradient id="rocket-body-lg" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stopColor="#ffffff" />
+                                        <stop offset="50%" stopColor="#e2e8f0" />
+                                        <stop offset="100%" stopColor="#94a3b8" />
+                                    </linearGradient>
+
+                                    {/* AI Flame Gradient */}
+                                    <linearGradient id="rocket-flame-lg" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" stopColor="#ff6666" />
+                                        <stop offset="40%" stopColor="#ff2a2a" />
+                                        <stop offset="100%" stopColor="#800000" />
+                                    </linearGradient>
+                                </defs>
+
+                                {/* Left Bracket Fin '<' */}
+                                <path
+                                    d="M9 22L4 26L9 28"
+                                    stroke="url(#rocket-body-lg)"
+                                    strokeWidth="2.8"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                />
+
+                                {/* Right Bracket Fin '>' */}
+                                <path
+                                    d="M27 22L32 26L27 28"
+                                    stroke="url(#rocket-body-lg)"
+                                    strokeWidth="2.8"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                />
+
+                                {/* Rocket Fuselage */}
+                                <path
+                                    d="M18 3L25 15L21 25H15L11 15L18 3Z"
+                                    fill="url(#rocket-body-lg)"
+                                />
+
+                                {/* Glass Reflection / Sheen Line */}
+                                <path
+                                    d="M18 5L22 14H19L17 5H18Z"
+                                    fill="white"
+                                    className="opacity-60"
+                                />
+
+                                {/* Main Flame Thrust Beam */}
+                                <path
+                                    d="M18 22V33"
+                                    stroke="url(#rocket-flame-lg)"
+                                    strokeWidth="4"
+                                    strokeLinecap="round"
+                                    className="drop-shadow-[0_0_12px_#ff2a2a]"
+                                />
+
+                                {/* Side Thrust Sparks */}
+                                <path
+                                    d="M15 25L13 30"
+                                    stroke="#ff4d4d"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                />
+                                <path
+                                    d="M21 25L23 30"
+                                    stroke="#ff4d4d"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                />
+
+                                {/* Cockpit Window / Core Node */}
+                                <circle cx="18" cy="12" r="2.2" fill="#09090c" />
+                                <circle cx="18" cy="12" r="1" fill="#ff4d4d" />
+                            </svg>
                         </div>
 
                         {/* Brand */}
-                        <div className="leading-none">
+                        <div className="leading-none flex items-center gap-2">
+                            <div>
+                                <div className="text-xl font-black tracking-tight text-white flex items-center gap-0.5">
+                                    <span className="tracking-tight">Code</span>
+                                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff6b66] via-[#ef3b39] to-[#ff8f8b] drop-shadow-[0_2px_10px_rgba(239,59,57,0.3)]">
+                                        Pilot
+                                    </span>
+                                </div>
 
-                            <div className="text-xl font-bold tracking-tight text-white">
-                                CodePilot
+                                <div className="mt-1 flex items-center gap-1.5">
+                                    <span className="h-[2px] w-2 bg-[#ff514b] rounded-full" />
+                                    <span className="text-[9px] font-mono tracking-[0.25em] text-[#ff514b] font-bold uppercase">
+                                        AI Review
+                                    </span>
+                                </div>
                             </div>
 
-                            <div className="mt-1 font-mono text-[9px] font-medium tracking-[0.32em] text-red-400">
-                                AI REVIEW
-                            </div>
-
+                            {/* Ambient Sparkle Icon */}
+                            <svg className="w-3.5 h-3.5 text-red-400 animate-pulse -mt-3" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0L14.593 9.407L24 12L14.593 14.593L12 24L9.407 14.593L0 12L9.407 9.407L12 0Z" />
+                            </svg>
                         </div>
 
                     </Link>
@@ -265,34 +344,63 @@ export default function Hero() {
                         LOGOUT
                     ================================================== */}
 
-                    <button
-                        onClick={handleLogout}
-                        className="
-                            hidden
-                            md:flex
-                            items-center
-                            gap-2
-                            rounded-full
-                            border border-white/20
-                            bg-white/[0.04]
-                            px-6
-                            py-3
-                            text-sm
-                            font-medium
-                            text-zinc-200
-                            backdrop-blur-md
-                            transition-all
-                            duration-300
-                            hover:border-red-500/40
-                            hover:bg-red-500/[0.08]
-                            hover:text-white
-                            hover:shadow-[0_0_25px_rgba(239,68,68,0.12)]
-                        "
-                    >
-                        <LogOut size={16} />
-
-                        Log out
-                    </button>
+                    {isLoggedIn ? (
+                        <button
+                            onClick={handleLogout}
+                            className="
+            hidden
+            md:flex
+            items-center
+            gap-2
+            rounded-full
+            border border-white/20
+            bg-white/[0.04]
+            px-6
+            py-3
+            text-sm
+            font-medium
+            text-zinc-200
+            backdrop-blur-md
+            transition-all
+            duration-300
+            hover:border-red-500/40
+            hover:bg-red-500/[0.08]
+            hover:text-white
+            hover:shadow-[0_0_25px_rgba(239,68,68,0.12)]
+        "
+                        >
+                            <LogOut size={16} />
+                            Log out
+                        </button>
+                    ) : (
+                        <Link
+                            to="/login"
+                            className="
+            hidden
+            md:flex
+            items-center
+            gap-2
+            rounded-full
+            border border-white/20
+            bg-white/[0.04]
+            px-6
+            py-3
+            text-sm
+            font-medium
+            text-zinc-200
+            backdrop-blur-md
+            transition-all
+            duration-300
+            hover:border-red-500/40
+            hover:bg-red-500/[0.08]
+            hover:text-white
+            hover:shadow-[0_0_25px_rgba(239,68,68,0.12)]
+        "
+                        >
+                            <LogIn size={16} />
+                            Log in
+                        </Link>
+                    )}
 
                 </div>
 

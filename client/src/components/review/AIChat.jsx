@@ -35,11 +35,18 @@ export default function AIChat({
         setQuestion("");
         setLoading(true);
 
+        console.log({
+            language,
+            originalCode,
+            improvedCode,
+            question: userQuestion,
+        });
+
         try {
             const response = await api.post("/review/chat", {
-                language,
-                original_code: originalCode,
-                improved_code: improvedCode,
+                language: language || "",
+                original_code: originalCode || "",
+                improved_code: improvedCode || "",
                 question: userQuestion,
             });
 
@@ -157,8 +164,8 @@ export default function AIChat({
                     <div
                         key={index}
                         className={`flex gap-3 ${message.role === "user"
-                                ? "justify-end"
-                                : "justify-start"
+                            ? "justify-end"
+                            : "justify-start"
                             }`}
                     >
 
@@ -175,8 +182,8 @@ export default function AIChat({
                         {/* Message */}
                         <div
                             className={`max-w-[80%] whitespace-pre-wrap rounded-2xl px-4 py-3 text-xs leading-6 ${message.role === "user"
-                                    ? "rounded-br-md bg-gradient-to-br from-[#ef3b39] to-[#b51b1f] text-white shadow-[0_8px_25px_-10px_rgba(239,59,57,0.6)]"
-                                    : "rounded-bl-md border border-white/[0.06] bg-white/[0.025] text-zinc-400"
+                                ? "rounded-br-md bg-gradient-to-br from-[#ef3b39] to-[#b51b1f] text-white shadow-[0_8px_25px_-10px_rgba(239,59,57,0.6)]"
+                                : "rounded-bl-md border border-white/[0.06] bg-white/[0.025] text-zinc-400"
                                 }`}
                         >
                             {message.text}

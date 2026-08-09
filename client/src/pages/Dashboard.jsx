@@ -81,15 +81,11 @@ export default function Dashboard() {
                 {PAGE_BACKGROUND_IMAGE && (
                     <>
                         <div
-                            className="absolute inset-0 bg-cover bg-center opacity-60"
+                            className="absolute inset-0 bg-cover bg-center"
                             style={{
                                 backgroundImage: `url("${PAGE_BACKGROUND_IMAGE}")`,
                             }}
                         />
-
-                        <div className="absolute inset-0 bg-black/20" />
-
-                        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-black/35" />
                     </>
                 )}
 
