@@ -1,4 +1,5 @@
 import { ArrowRight, PlayCircle } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function HeroContent() {
     return (
@@ -23,18 +24,13 @@ export default function HeroContent() {
             </p>
 
             <div className="mt-9 flex flex-wrap items-center gap-4">
-                <a
-                    href="http://localhost:5173/review"
+                <Link
+                    to="/review"
                     className="inline-flex items-center gap-2 rounded-full bg-gradient-to-br from-[#ef3b39] to-[#a8171a] px-6 py-3.5 text-sm font-semibold text-white shadow-[0_8px_22px_-6px_rgba(216,38,38,0.65)] transition hover:-translate-y-0.5 hover:shadow-[0_12px_26px_-6px_rgba(216,38,38,0.8)]"
                 >
                     Start Reviewing <ArrowRight size={16} />
-                </a>
-                <a
-                    href="http://localhost:5173/demo"
-                    className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white/85 transition hover:border-white/40 hover:bg-white/10"
-                >
-                    <PlayCircle size={16} /> Live Demo
-                </a>
+                </Link>
+
             </div>
         </div>
     );
