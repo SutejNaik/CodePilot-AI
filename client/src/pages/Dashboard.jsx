@@ -19,7 +19,7 @@ import {
     ArrowUpRight,
 } from "lucide-react";
 
-const PAGE_BACKGROUND_IMAGE = "/images/codepilot-bg2.png";
+const PAGE_BACKGROUND_IMAGE = "/images/codepilot-bg1.png";
 
 export default function Dashboard() {
     const [stats, setStats] = useState({
