@@ -1,4 +1,3 @@
-
 import os
 
 from dotenv import load_dotenv
@@ -35,7 +34,9 @@ frontend_url = os.getenv(
 allowed_origins = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
+    "https://codepilot-ai-nine.vercel.app",
 ]
+
 
 # Add deployed frontend URL if provided
 if frontend_url not in allowed_origins:
