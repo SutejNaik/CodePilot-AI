@@ -2,97 +2,32 @@
 
 ### AI-Powered Code Review & Security Analysis Platform
 
-**CodePilot AI** is a full-stack web application that uses artificial intelligence to analyze source code and provide meaningful code review feedback.
+CodePilot AI is a full-stack web application that uses artificial intelligence to analyze source code and provide professional code reviews.
 
-The platform helps developers identify potential bugs, security issues, code-quality problems, and improvement opportunities before committing or merging code into a project.
-
-## 🚀 Live Demo
-
-**Website:** https://codepilot-ai-nine.vercel.app/
-
-**Backend API:** https://codepilot-ai-backend-d7wx.onrender.com/
-
-**GitHub:** https://github.com/SutejNaik/CodePilot-AI
+It helps developers identify potential bugs, security vulnerabilities, performance issues, code-quality problems, and improvement opportunities before committing or merging code into a project.
 
 ---
 
-## ✨ Features
+## Features
 
-* 🔐 User registration and login
-* 🛡️ JWT-based authentication
-* 🤖 AI-powered code analysis
-* 💻 Multi-language code review
-* 🐛 Bug and issue identification
-* 🔒 Security analysis
-* ⚡ Performance recommendations
-* 🧹 Code-quality and best-practice suggestions
-* 📊 Review score and analysis results
-* 💬 AI chat for discussing reviewed code
-* 🕒 Review history
-* 👤 User profile
-* 📱 Responsive web interface
-
----
-
-## 🎯 Problem Statement
-
-Developers often spend significant time reviewing source code manually before committing or merging it into a project.
-
-Manual code reviews can overlook:
-
-* Bugs and logical issues
-* Security vulnerabilities
-* Poor coding practices
-* Performance problems
-* Code smells
-* Maintainability issues
-
-CodePilot AI provides an AI-assisted approach that analyzes source code and presents the results in an understandable format.
+* User registration and login
+* JWT-based authentication
+* AI-powered code analysis
+* Multi-language code review
+* Bug and issue detection
+* Security vulnerability analysis
+* Performance recommendations
+* Code quality and best-practice suggestions
+* Detailed review results
+* AI chat for discussing reviewed code
+* Review history
+* User profile
+* Review report generation
+* Responsive web interface
 
 ---
 
-## 💡 Objectives
-
-The main objectives of CodePilot AI are to:
-
-1. Automate parts of the code-review process.
-2. Identify potential issues in source code.
-3. Provide security and quality recommendations.
-4. Help developers understand problems in their code.
-5. Provide an interactive AI chat for discussing review results.
-6. Store previous reviews for future reference.
-7. Provide a simple and modern developer-focused interface.
-
----
-
-## 🏗️ System Architecture
-
-```text
-                         ┌──────────────────────────┐
-                         │      CodePilot AI        │
-                         │      React + Vite        │
-                         │        Frontend          │
-                         └────────────┬─────────────┘
-                                      │
-                                      │ HTTPS / REST API
-                                      ▼
-                         ┌──────────────────────────┐
-                         │        FastAPI           │
-                         │         Backend          │
-                         └────────────┬─────────────┘
-                                      │
-                    ┌─────────────────┼─────────────────┐
-                    │                 │                 │
-                    ▼                 ▼                 ▼
-             ┌─────────────┐  ┌─────────────┐  ┌─────────────┐
-             │  MongoDB    │  │  Groq AI    │  │    JWT      │
-             │    Atlas    │  │    Model     │  │Authentication│
-             └─────────────┘  └─────────────┘  └─────────────┘
-```
-
----
-
-## 🛠️ Technology Stack
+## Technology Stack
 
 ### Frontend
 
@@ -100,17 +35,14 @@ The main objectives of CodePilot AI are to:
 * Vite
 * Tailwind CSS
 * React Router
-* Axios
 * Lucide React
 
 ### Backend
 
 * Python
 * FastAPI
-* Pydantic
 * Uvicorn
-* Python-JOSE
-* Passlib / bcrypt
+* Pydantic
 
 ### Database
 
@@ -121,18 +53,89 @@ The main objectives of CodePilot AI are to:
 
 * Groq API
 * AI-powered code analysis
-* AI conversational code discussion
+
+### Authentication
+
+* JWT
+* Passlib
+* bcrypt
 
 ### Deployment
 
 * Vercel — Frontend
 * Render — Backend
-* MongoDB Atlas — Database
-* GitHub — Version control
+* GitHub — Version Control
 
 ---
 
-## 📂 Project Structure
+## System Architecture
+
+```text
+                    ┌──────────────────────────┐
+                    │       CodePilot AI       │
+                    │       Web Client         │
+                    │     React + Vite         │
+                    └────────────┬─────────────┘
+                                 │
+                                 │ HTTP / REST API
+                                 ▼
+                    ┌──────────────────────────┐
+                    │       FastAPI API        │
+                    │         Backend          │
+                    └────────────┬─────────────┘
+                                 │
+              ┌──────────────────┼──────────────────┐
+              │                  │                  │
+              ▼                  ▼                  ▼
+       ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
+       │  MongoDB    │    │  Groq AI    │    │    JWT      │
+       │    Atlas    │    │    Model     │    │    Auth     │
+       └─────────────┘    └─────────────┘    └─────────────┘
+```
+
+---
+
+## Application Workflow
+
+```text
+User
+ │
+ ▼
+Register / Login
+ │
+ ▼
+Dashboard
+ │
+ ▼
+Code Review
+ │
+ ├── Select Programming Language
+ │
+ ├── Enter / Submit Source Code
+ │
+ ▼
+AI Analysis
+ │
+ ├── Bugs
+ ├── Security Issues
+ ├── Performance
+ ├── Code Quality
+ └── Improvements
+ │
+ ▼
+Review Results
+ │
+ ├── Detailed Analysis
+ ├── AI Chat
+ └── Report
+ │
+ ▼
+Review History
+```
+
+---
+
+## Project Structure
 
 ```text
 CodePilot-AI/
@@ -143,10 +146,13 @@ CodePilot-AI/
 │   │   ├── models/
 │   │   ├── routes/
 │   │   ├── services/
-│   │   └── utils/
+│   │   ├── utils/
+│   │   ├── config.py
+│   │   └── main.py
 │   │
 │   ├── .env.example
-│   └── requirements.txt
+│   ├── requirements.txt
+│   └── ...
 │
 ├── client/
 │   ├── public/
@@ -154,10 +160,11 @@ CodePilot-AI/
 │   │   ├── api/
 │   │   ├── components/
 │   │   ├── pages/
-│   │   └── ...
+│   │   ├── App.jsx
+│   │   └── main.jsx
 │   │
 │   ├── package.json
-│   └── vercel.json
+│   └── vite.config.js
 │
 ├── .gitignore
 └── README.md
@@ -165,131 +172,96 @@ CodePilot-AI/
 
 ---
 
-## 🔄 How It Works
+## Main Modules
 
-### 1. User Authentication
+### 1. Authentication
 
-A user creates an account or logs in.
+Users can create an account and securely log in.
 
-The backend authenticates the user and provides a JWT token.
+Authentication is handled using JWT tokens, while passwords are securely hashed before being stored.
 
-### 2. Code Submission
+### 2. Code Review
 
-The user selects a programming language and provides source code through the review interface.
+Users can submit source code and select the appropriate programming language.
+
+The application sends the code to the AI analysis service and generates a structured review.
 
 ### 3. AI Analysis
 
-The backend sends the code and relevant instructions to the AI service.
-
-The AI analyzes the code for areas such as:
+The AI analyzes submitted code for:
 
 * Bugs
-* Security issues
-* Performance
-* Code quality
-* Best practices
+* Security vulnerabilities
+* Performance issues
+* Code smells
+* Quality problems
+* Best-practice improvements
 
-### 4. Review Results
+### 4. AI Chat
 
-The application presents the generated review in a structured interface along with a review score and identified issues.
+After receiving a review, users can interact with the AI to ask questions and better understand the analyzed code.
 
-### 5. AI Discussion
+### 5. Review History
 
-Users can continue discussing their reviewed code through the integrated AI chat.
+Previous code reviews are stored and can be accessed from the History page.
 
-### 6. Review History
+### 6. Dashboard
 
-Completed reviews are stored in MongoDB and can be accessed through the History section.
+The dashboard provides an overview of the user's activity and recent reviews.
 
----
+### 7. Profile
 
-## 🔐 Security
-
-CodePilot AI uses several security mechanisms:
-
-* JWT authentication
-* Password hashing using bcrypt
-* Environment variables for sensitive configuration
-* Protected API routes
-* CORS configuration
-* Secrets excluded from Git using `.gitignore`
-
-Sensitive credentials such as database connection strings, AI API keys, and JWT secrets are not stored in the source repository.
+Users can access their account information from the Profile page.
 
 ---
 
-## 🌐 Deployment
+## Environment Variables
 
-The application is deployed using a separated frontend/backend architecture.
+Create a `.env` file inside the `backend` directory.
 
-```text
-User
- │
- ▼
-Vercel
-React Frontend
- │
- │ HTTPS
- ▼
-Render
-FastAPI Backend
- │
- ├──────────────► MongoDB Atlas
- │
- └──────────────► Groq AI
+Example:
+
+```env
+MONGO_URL=your-mongodb-connection-string
+DATABASE_NAME=your-database-name
+GROQ_API_KEY=your-groq-api-key
+CODEPILOT_SECRET_KEY=your-secret-key
+FRONTEND_URL=http://localhost:5173
 ```
 
-### Production URLs
-
-**Frontend**
-
-https://codepilot-ai-nine.vercel.app/
-
-**Backend**
-
-https://codepilot-ai-backend-d7wx.onrender.com/
+Never commit the actual `.env` file or API keys to GitHub.
 
 ---
 
-## 💻 Local Development
-
-### Prerequisites
-
-* Node.js
-* Python
-* MongoDB Atlas account
-* Groq API key
-* Git
-
-### Clone the repository
-
-```bash
-git clone https://github.com/SutejNaik/CodePilot-AI.git
-cd CodePilot-AI
-```
+## Running the Project Locally
 
 ### Backend
 
+Open a terminal:
+
 ```bash
 cd backend
+```
+
+Create and activate a virtual environment if required:
+
+```bash
 python -m venv venv
 ```
 
-Activate the virtual environment and install dependencies:
+Install dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Create a `.env` file inside `backend` and configure the required environment variables.
-
-Start the backend:
+Start the FastAPI server:
 
 ```bash
 uvicorn app.main:app --reload
 ```
 
-The API will be available at:
+Backend:
 
 ```text
 http://127.0.0.1:8000
@@ -305,7 +277,7 @@ npm install
 npm run dev
 ```
 
-The development frontend will be available at:
+Frontend:
 
 ```text
 http://localhost:5173
@@ -313,54 +285,94 @@ http://localhost:5173
 
 ---
 
-## 📊 Main Modules
+## Deployment
 
-| Module         | Description                                |
-| -------------- | ------------------------------------------ |
-| Authentication | Registration, login and JWT authentication |
-| Code Review    | AI-powered source-code analysis            |
-| AI Chat        | Interactive discussion about reviewed code |
-| Dashboard      | Review statistics and recent activity      |
-| History        | Previously completed code reviews          |
-| Profile        | User profile and account information       |
-| API            | FastAPI-based backend services             |
-| Database       | MongoDB-based persistent storage           |
+The project is deployed using:
+
+* **Frontend:** Vercel
+* **Backend:** Render
+* **Database:** MongoDB Atlas
+* **Source Code:** GitHub
+
+### Production URLs
+
+**Frontend**
+
+https://codepilot-ai-nine.vercel.app/
+
+**Backend**
+
+https://codepilot-ai-backend-d7wx.onrender.com/
 
 ---
 
-## 🔮 Future Scope
+## Security Considerations
+
+The application follows several basic security practices:
+
+* Password hashing using bcrypt
+* JWT-based authentication
+* Protected backend routes
+* Environment variables for sensitive credentials
+* CORS configuration
+* API keys excluded from source control
+* `.env` excluded through `.gitignore`
+
+---
+
+## Project Status
+
+| Module           | Status    |
+| ---------------- | --------- |
+| Project Planning | Completed |
+| Architecture     | Completed |
+| Backend          | Completed |
+| Database         | Completed |
+| Authentication   | Completed |
+| AI Integration   | Completed |
+| Frontend         | Completed |
+| Dashboard        | Completed |
+| Code Review      | Completed |
+| AI Chat          | Completed |
+| Review History   | Completed |
+| Profile          | Completed |
+| Deployment       | Completed |
+
+---
+
+## Future Enhancements
 
 Possible future improvements include:
 
 * GitHub repository integration
-* Pull request code review
-* Automated CI/CD integration
-* More advanced static analysis
-* Custom coding standards
+* Pull request code reviews
+* Additional programming languages
+* Advanced static analysis
+* Code quality scoring
 * Team collaboration
-* Review report export
-* Additional programming-language support
-* Improved security scanning
-* Code-quality trend analytics
+* Email notifications
+* Detailed analytics
+* Custom project-level review rules
 
 ---
 
-## 📌 Project Status
+## Purpose
 
-**Status: Completed and Deployed**
-
-The current version includes the core authentication, AI code review, AI chat, history, profile, dashboard, database, and production deployment functionality.
+CodePilot AI was developed as an academic full-stack project to explore the integration of modern web development, REST APIs, authentication, databases, cloud deployment, and AI-powered software engineering tools.
 
 ---
 
-## 👨‍💻 Author
+## Author
 
 **Sutej Naik**
 
-CodePilot AI was developed as an academic full-stack project to explore AI-assisted software development and automated code review.
+MCA — Master of Computer Applications
 
 ---
 
-## 📄 License
+## License
 
-This project is intended primarily for academic and educational purposes.
+This project is developed for educational and academic purposes.
+
+```
+```
