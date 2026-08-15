@@ -2,7 +2,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import {
     ArrowRight,
     LogIn,
@@ -19,6 +19,7 @@ const ROBOT_IMAGE = "/images/Character.jpg";
 export default function Hero() {
     const spotlightRef = useRef(null);
     const navigate = useNavigate();
+    const location = useLocation();
 
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -273,90 +274,62 @@ export default function Hero() {
 
                         <Link
                             to="/dashboard"
-                            className="
-                                relative py-2
-                                text-sm font-medium text-zinc-300
-                                transition-colors duration-300
-                                hover:text-white
-                                after:absolute
-                                after:bottom-0
-                                after:left-0
-                                after:h-[2px]
-                                after:w-0
-                                after:bg-red-500
-                                after:shadow-[0_0_10px_rgba(239,68,68,0.8)]
-                                after:transition-all
-                                after:duration-300
-                                hover:after:w-full
-                            "
+                            className="relative py-2 text-sm font-medium text-zinc-300 transition-colors duration-300 hover:text-white"
                         >
                             Dashboard
+
+                            {location.pathname === "/dashboard" && (
+                                <span className="pointer-events-none absolute left-0 right-0 -bottom-[13px] h-[2px] overflow-hidden">
+                                    <span className="absolute inset-0 bg-red-500/20" />
+
+                                    <span className="absolute top-0 bottom-0 left-[-45%] w-[45%] bg-gradient-to-r from-transparent via-white to-transparent shadow-[0_0_12px_rgba(239,68,68,0.95)] animate-[navScan_2.4s_ease-in-out_infinite]" />
+                                </span>
+                            )}
                         </Link>
 
                         <Link
                             to="/review"
-                            className="
-                                relative py-2
-                                text-sm font-medium text-zinc-300
-                                transition-colors duration-300
-                                hover:text-white
-                                after:absolute
-                                after:bottom-0
-                                after:left-0
-                                after:h-[2px]
-                                after:w-0
-                                after:bg-red-500
-                                after:shadow-[0_0_10px_rgba(239,68,68,0.8)]
-                                after:transition-all
-                                after:duration-300
-                                hover:after:w-full
-                            "
+                            className="relative py-2 text-sm font-medium text-zinc-300 transition-colors duration-300 hover:text-white"
                         >
                             Code Review
+
+                            {location.pathname === "/review" && (
+                                <span className="pointer-events-none absolute left-0 right-0 -bottom-[13px] h-[2px] overflow-hidden">
+                                    <span className="absolute inset-0 bg-red-500/20" />
+
+                                    <span className="absolute top-0 bottom-0 left-[-45%] w-[45%] bg-gradient-to-r from-transparent via-white to-transparent shadow-[0_0_12px_rgba(239,68,68,0.95)] animate-[navScan_2.4s_ease-in-out_infinite]" />
+                                </span>
+                            )}
                         </Link>
 
                         <Link
                             to="/history"
-                            className="
-                                relative py-2
-                                text-sm font-medium text-zinc-300
-                                transition-colors duration-300
-                                hover:text-white
-                                after:absolute
-                                after:bottom-0
-                                after:left-0
-                                after:h-[2px]
-                                after:w-0
-                                after:bg-red-500
-                                after:shadow-[0_0_10px_rgba(239,68,68,0.8)]
-                                after:transition-all
-                                after:duration-300
-                                hover:after:w-full
-                            "
+                            className="relative py-2 text-sm font-medium text-zinc-300 transition-colors duration-300 hover:text-white"
                         >
                             History
+
+                            {location.pathname === "/history" && (
+                                <span className="pointer-events-none absolute left-0 right-0 -bottom-[13px] h-[2px] overflow-hidden">
+                                    <span className="absolute inset-0 bg-red-500/20" />
+
+                                    <span className="absolute top-0 bottom-0 left-[-45%] w-[45%] bg-gradient-to-r from-transparent via-white to-transparent shadow-[0_0_12px_rgba(239,68,68,0.95)] animate-[navScan_2.4s_ease-in-out_infinite]" />
+                                </span>
+                            )}
                         </Link>
 
                         <Link
                             to="/profile"
-                            className="
-                                relative py-2
-                                text-sm font-medium text-zinc-300
-                                transition-colors duration-300
-                                hover:text-white
-                                after:absolute
-                                after:bottom-0
-                                after:left-0
-                                after:h-[2px]
-                                after:w-0
-                                after:bg-red-500
-                                after:shadow-[0_0_10px_rgba(239,68,68,0.8)]
-                                after:transition-all
-                                after:duration-300
-                                hover:after:w-full
-                            "
+                            className="relative py-2 text-sm font-medium text-zinc-300 transition-colors duration-300 hover:text-white"
                         >
                             Profile
+
+                            {location.pathname === "/profile" && (
+                                <span className="pointer-events-none absolute left-0 right-0 -bottom-[13px] h-[2px] overflow-hidden">
+                                    <span className="absolute inset-0 bg-red-500/20" />
+
+                                    <span className="absolute top-0 bottom-0 left-[-45%] w-[45%] bg-gradient-to-r from-transparent via-white to-transparent shadow-[0_0_12px_rgba(239,68,68,0.95)] animate-[navScan_2.4s_ease-in-out_infinite]" />
+                                </span>
+                            )}
                         </Link>
 
                     </div>
@@ -658,6 +631,32 @@ export default function Hero() {
                     }
                 }
             `}</style>
+
+            <style>{`
+    @keyframes navScan {
+        0% {
+            left: -45%;
+            opacity: 0;
+        }
+
+        10% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 1;
+        }
+
+        90% {
+            opacity: 0.8;
+        }
+
+        100% {
+            left: 100%;
+            opacity: 0;
+        }
+    }
+`}</style>
 
         </section>
     );
