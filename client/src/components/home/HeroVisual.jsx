@@ -41,10 +41,10 @@ export default function HeroVisual() {
                         <span
                             key={i}
                             className={`block ${line.type === "del"
-                                    ? "bg-red-500/15 text-red-300"
-                                    : line.type === "add"
-                                        ? "bg-green-500/15 text-green-300"
-                                        : "text-white/55"
+                                ? "bg-red-500/15 text-red-300"
+                                : line.type === "add"
+                                    ? "bg-green-500/15 text-green-300"
+                                    : "text-white/55"
                                 }`}
                         >
                             {line.text}

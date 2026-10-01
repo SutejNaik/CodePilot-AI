@@ -9,25 +9,6 @@ export default function Home() {
         <div className="min-h-screen">
 
             {/* =====================================================
-                GLOBAL BACKGROUND
-            ====================================================== */}
-
-            <div className="fixed inset-0 z-0 pointer-events-none">
-                <img
-                    src="/images/codepilot-bg1.png"
-                    alt=""
-                    className="absolute inset-0 h-full w-full object-cover"
-                />
-
-                <div className="absolute inset-0 bg-black/52" />
-
-                <div className="absolute inset-0 bg-red-950/20" />
-
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(220,38,38,0.08),transparent_45%)]" />
-            </div>
-
-
-            {/* =====================================================
                 PAGE CONTENT
             ====================================================== */}
 

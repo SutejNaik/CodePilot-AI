@@ -271,48 +271,8 @@ export default function Review() {
     const score = Number(result?.score ?? 0);
 
     return (
-        <div className="min-h-screen bg-[#020203] text-white overflow-hidden selection:bg-red-500/30">
+        <div className="min-h-screen bg-transparent text-white">
 
-            {/* =====================================================
-                BACKGROUND
-            ===================================================== */}
-
-            <div className="fixed inset-0 pointer-events-none overflow-hidden">
-
-                {PAGE_BACKGROUND_IMAGE && (
-                    <div
-                        className="absolute inset-0 bg-cover bg-center opacity-[0.45]"
-                        style={{
-                            backgroundImage: `url("${PAGE_BACKGROUND_IMAGE}")`,
-                        }}
-                    />
-                )}
-
-                <div className="absolute inset-0 bg-[#020203]/30" />
-
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(239,68,68,.18),transparent_34%)]" />
-
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_35%,rgba(244,63,94,.12),transparent_28%)]" />
-
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_65%,rgba(249,115,22,.10),transparent_28%)]" />
-
-                <div className="absolute -top-72 left-[12%] w-[700px] h-[700px] rounded-full bg-red-500/[0.11] blur-[180px] animate-[float-1_18s_ease-in-out_infinite]" />
-
-                <div className="absolute top-[35%] -right-72 w-[700px] h-[700px] rounded-full bg-rose-500/[0.09] blur-[190px] animate-[float-2_22s_ease-in-out_infinite]" />
-
-                <div className="absolute bottom-[-300px] left-[30%] w-[650px] h-[650px] rounded-full bg-orange-500/[0.07] blur-[190px]" />
-
-                <div
-                    className="absolute inset-0 opacity-[0.045]"
-                    style={{
-                        backgroundImage:
-                            "linear-gradient(rgba(255,255,255,.8) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.8) 1px, transparent 1px)",
-                        backgroundSize: "70px 70px",
-                    }}
-                />
-
-                <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_0%,rgba(0,0,0,.2)_50%,rgba(0,0,0,.7)_100%)]" />
-            </div>
 
             {/* =====================================================
                 FULLSCREEN

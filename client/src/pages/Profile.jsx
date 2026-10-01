@@ -110,50 +110,10 @@ export default function Profile() {
     // =========================================================
 
     return (
-        <div className="min-h-screen bg-[#070709] text-white">
+        <div className="min-h-screen bg-transparent text-white">
 
-            {/* =================================================
-                BACKGROUND
-            ================================================= */}
 
-            <div className="fixed inset-0 z-0 pointer-events-none">
 
-                <img
-                    src="/images/codepilot-bg2.png"
-                    alt=""
-                    className="absolute inset-0 h-full w-full object-cover"
-                />
-
-                <div className="absolute inset-0 bg-black/55" />
-
-                <div className="absolute inset-0 bg-red-950/20" />
-
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_15%,rgba(220,38,38,0.10),transparent_45%)]" />
-
-                <div
-                    className="absolute inset-0 opacity-[0.025]"
-                    style={{
-                        backgroundImage:
-                            "linear-gradient(rgba(255,255,255,.8) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.8) 1px, transparent 1px)",
-                        backgroundSize: "60px 60px",
-                    }}
-                />
-
-            </div>
-
-            {/* =================================================
-                BACKGROUND EFFECTS
-            ================================================= */}
-
-            <div className="fixed inset-0 pointer-events-none overflow-hidden">
-
-                <div className="absolute -top-40 left-1/4 w-[600px] h-[600px] rounded-full bg-red-600/[0.07] blur-[150px]" />
-
-                <div className="absolute top-[45%] -right-60 w-[600px] h-[600px] rounded-full bg-rose-500/[0.05] blur-[160px]" />
-
-                <div className="absolute -bottom-60 left-1/3 w-[500px] h-[500px] rounded-full bg-red-800/[0.05] blur-[170px]" />
-
-            </div>
 
             {/* =================================================
                 NAVBAR

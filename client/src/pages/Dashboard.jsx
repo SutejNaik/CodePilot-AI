@@ -19,7 +19,6 @@ import {
     ArrowUpRight,
 } from "lucide-react";
 
-const PAGE_BACKGROUND_IMAGE = "/images/codepilot-bg1.png";
 
 export default function Dashboard() {
     const [stats, setStats] = useState({
@@ -70,43 +69,8 @@ export default function Dashboard() {
     ];
 
     return (
-        <div className="min-h-screen overflow-hidden bg-[#070707] text-white">
+        <div className="min-h-screen bg-transparent text-white">
 
-            {/* =====================================================
-                BACKGROUND
-            ====================================================== */}
-
-            <div className="fixed inset-0 pointer-events-none">
-
-                {PAGE_BACKGROUND_IMAGE && (
-                    <>
-                        <div
-                            className="absolute inset-0 bg-cover bg-center"
-                            style={{
-                                backgroundImage: `url("${PAGE_BACKGROUND_IMAGE}")`,
-                            }}
-                        />
-                    </>
-                )}
-
-                {/* Red ambient glow */}
-
-                <div className="absolute -top-40 left-[15%] h-[550px] w-[550px] rounded-full bg-red-600/[0.07] blur-[150px]" />
-
-                <div className="absolute top-[45%] -right-60 h-[600px] w-[600px] rounded-full bg-rose-500/[0.05] blur-[160px]" />
-
-                {/* Subtle grid */}
-
-                <div
-                    className="absolute inset-0 opacity-[0.025]"
-                    style={{
-                        backgroundImage:
-                            "linear-gradient(rgba(255,255,255,.8) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.8) 1px, transparent 1px)",
-                        backgroundSize: "60px 60px",
-                    }}
-                />
-
-            </div>
 
 
             {/* =====================================================
