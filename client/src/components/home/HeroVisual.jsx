@@ -12,15 +12,8 @@ const diffLines = [
 export default function HeroVisual() {
     return (
         <>
-            {/* Scanning beam sweeping over the photo */}
-            <div
-                className="pointer-events-none absolute left-[40%] right-[2%] top-0 z-[6] h-[2px] animate-[scan_5.5s_ease-in-out_infinite] [animation-delay:1.2s]"
-                style={{
-                    background:
-                        "linear-gradient(90deg, transparent, #ff6a52 45%, #fff 50%, #ff6a52 55%, transparent)",
-                    mixBlendMode: "screen",
-                }}
-            />
+
+
 
             {/* Analyzing pill, near the robot's head */}
             <div className="absolute right-4 top-[16%] z-[6] inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/45 px-3.5 py-2 font-mono text-[11px] tracking-wide text-white/85 backdrop-blur-md animate-[floatCard_5s_ease-in-out_infinite] sm:right-10 lg:right-[8%]">

@@ -1,7 +1,6 @@
-
 "use client";
 
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import {
     ArrowRight,
@@ -14,10 +13,10 @@ import {
 import HeroContent from "./HeroContent";
 import HeroVisual from "./HeroVisual";
 
-const ROBOT_IMAGE = "/images/Character.jpg";
+// Replace this with the path to your video file (e.g., in the /public folder)
+const BG_VIDEO_URL = "/images/hero1.mp4";
 
 export default function Hero() {
-    const spotlightRef = useRef(null);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -26,17 +25,6 @@ export default function Hero() {
     const isLoggedIn =
         !!localStorage.getItem("token") ||
         !!localStorage.getItem("access_token");
-
-    const handleMouseMove = (e) => {
-        const rect = e.currentTarget.getBoundingClientRect();
-        const x = ((e.clientX - rect.left) / rect.width) * 100;
-        const y = ((e.clientY - rect.top) / rect.height) * 100;
-
-        if (spotlightRef.current) {
-            spotlightRef.current.style.setProperty("--x", `${x}%`);
-            spotlightRef.current.style.setProperty("--y", `${y}%`);
-        }
-    };
 
     const handleLogout = () => {
         localStorage.removeItem("token");
@@ -51,75 +39,33 @@ export default function Hero() {
 
     return (
         <section
-            onMouseMove={handleMouseMove}
             className="relative min-h-screen overflow-hidden bg-[#0a0304]"
         >
 
             {/* =====================================================
-                BACKGROUND
+                BACKGROUND VIDEO LAYER
             ====================================================== */}
 
-            <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute inset-0 overflow-hidden z-0">
+                {/* Video Background */}
+                <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="absolute inset-0 w-full h-full object-cover"
+                >
+                    <source src={BG_VIDEO_URL} type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
 
-                {/* Robot photo */}
-                <div
-                    className="absolute inset-0 bg-cover"
-                    style={{
-                        backgroundImage: `url("${ROBOT_IMAGE}")`,
-                        backgroundPosition: "82% 38%",
-                    }}
-                />
-
-                {/* Scrim */}
-                <div
-                    className="absolute inset-0"
-                    style={{
-                        background:
-                            "linear-gradient(100deg, #0a0304 0%, rgba(20,5,6,0.94) 26%, rgba(42,8,9,0.72) 42%, rgba(60,10,10,0.32) 58%, rgba(80,12,12,0.05) 74%), linear-gradient(to bottom, rgba(0,0,0,0.4), transparent 20%, transparent 75%, rgba(0,0,0,0.55))",
-                    }}
-                />
-
-                {/* Mouse-reactive spotlight */}
-                <div
-                    ref={spotlightRef}
-                    style={{
-                        "--x": "50%",
-                        "--y": "40%",
-                        background:
-                            "radial-gradient(560px circle at var(--x) var(--y), rgba(255,106,82,0.14), transparent 70%)",
-                        mixBlendMode: "screen",
-                    }}
-                    className="absolute inset-0 transition-[background] duration-300 ease-out"
-                />
-
-                {/* Fine grid */}
-                <div
-                    className="absolute inset-0 opacity-[0.05]"
-                    style={{
-                        backgroundImage:
-                            "linear-gradient(to right, #ffffff14 1px, transparent 1px), linear-gradient(to bottom, #ffffff14 1px, transparent 1px)",
-                        backgroundSize: "48px 48px",
-                        maskImage:
-                            "linear-gradient(105deg, black 0%, black 35%, transparent 60%)",
-                        WebkitMaskImage:
-                            "linear-gradient(105deg, black 0%, black 35%, transparent 60%)",
-                    }}
-                />
-
-                {/* Grain */}
-                <div
-                    className="pointer-events-none absolute inset-0 opacity-[0.035] mix-blend-overlay"
-                    style={{
-                        backgroundImage:
-                            "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
-                    }}
-                />
+                {/* Dark Scrim overlay to ensure text readability on video */}
+                <div className="absolute inset-0 bg-black/50" />
             </div>
 
 
             {/* =====================================================
                 HOME NAVBAR
-                LOCAL TO HERO — NO GLOBAL NAVBAR
             ====================================================== */}
 
             <nav className="absolute left-0 right-0 top-0 z-30">
@@ -267,14 +213,14 @@ export default function Hero() {
 
 
                     {/* =================================================
-                        DESKTOP NAVIGATION
+                        DESKTOP NAVIGATION (In a rounded container)
                     ================================================== */}
 
-                    <div className="hidden items-center gap-10 md:flex">
+                    <div className="hidden md:flex items-center gap-10 rounded-full border border-white/10 bg-black/30 px-10 py-3 backdrop-blur-md shadow-xl">
 
                         <Link
                             to="/dashboard"
-                            className="relative py-2 text-sm font-medium text-zinc-300 transition-colors duration-300 hover:text-white"
+                            className="relative py-2 text-sm font-medium text-zinc-200 transition-colors duration-300 hover:text-white"
                         >
                             Dashboard
 
@@ -289,7 +235,7 @@ export default function Hero() {
 
                         <Link
                             to="/review"
-                            className="relative py-2 text-sm font-medium text-zinc-300 transition-colors duration-300 hover:text-white"
+                            className="relative py-2 text-sm font-medium text-zinc-200 transition-colors duration-300 hover:text-white"
                         >
                             Code Review
 
@@ -304,7 +250,7 @@ export default function Hero() {
 
                         <Link
                             to="/history"
-                            className="relative py-2 text-sm font-medium text-zinc-300 transition-colors duration-300 hover:text-white"
+                            className="relative py-2 text-sm font-medium text-zinc-200 transition-colors duration-300 hover:text-white"
                         >
                             History
 
@@ -319,7 +265,7 @@ export default function Hero() {
 
                         <Link
                             to="/profile"
-                            className="relative py-2 text-sm font-medium text-zinc-300 transition-colors duration-300 hover:text-white"
+                            className="relative py-2 text-sm font-medium text-zinc-200 transition-colors duration-300 hover:text-white"
                         >
                             Profile
 
