@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AlertCircle, ArrowRight, CheckCircle2 } from "lucide-react";
 
 import api from "../api/axios";
+import { track } from "../analytics";
 import Footer from "../components/layout/Footer";
 
 /* =========================================================
@@ -264,7 +265,7 @@ export default function Register() {
                 email: formData.email,
                 password: formData.password,
             });
-
+            track("signup_completed");
             setMessage({
                 type: "success",
                 text: response.data.message || "Account created! Redirecting to login...",

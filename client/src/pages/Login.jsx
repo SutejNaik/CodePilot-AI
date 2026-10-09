@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AlertCircle, ArrowRight, CheckCircle2, Eye, EyeOff } from "lucide-react";
 
 import api from "../api/axios";
+import { track } from "../analytics";
 import Footer from "../components/layout/Footer";
 
 /* Card shake on error. Switched off for people who prefer reduced motion. */
@@ -273,6 +274,7 @@ export default function Login() {
             });
 
             localStorage.setItem("token", response.data.access_token);
+            track("login_success");
             setMessage({ type: "success", text: "Signed in. Taking you to your dashboard..." });
 
             redirectTimer.current = setTimeout(() => navigate("/dashboard"), 1200);

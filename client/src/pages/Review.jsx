@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import api from "../api/axios";
-
+import { track } from "../analytics";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 import Reveal from "../components/common/Reveal";
@@ -179,8 +179,10 @@ export default function Review() {
             });
 
             setResult(response.data);
+            track("review_completed", { language });
         } catch (error) {
             console.error("Review error:", error);
+            track("review_failed", { language });
         } finally {
             setLoading(false);
         }
