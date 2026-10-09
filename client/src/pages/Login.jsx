@@ -274,7 +274,7 @@ export default function Login() {
 
             localStorage.setItem("token", response.data.access_token);
             setMessage({ type: "success", text: "Signed in. Taking you to your dashboard..." });
-            track("login_success");
+
             redirectTimer.current = setTimeout(() => navigate("/dashboard"), 1200);
         } catch (error) {
             setMessage({

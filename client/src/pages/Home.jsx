@@ -1,14 +1,10 @@
-import { useEffect } from "react";
+
 import { Link } from "react-router-dom";
 import Footer from "../components/layout/Footer";
 import Button from "../components/common/Button";
 import Hero from "../components/home/Hero";
-import { track } from "../analytics";
 
 export default function Home() {
-    useEffect(() => {
-        track("landing_viewed");
-    }, []);
     return (
         <div className="min-h-screen">
 

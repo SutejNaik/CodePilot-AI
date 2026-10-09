@@ -264,7 +264,7 @@ export default function Register() {
                 email: formData.email,
                 password: formData.password,
             });
-            track("signup_completed");
+
             setMessage({
                 type: "success",
                 text: response.data.message || "Account created! Redirecting to login...",

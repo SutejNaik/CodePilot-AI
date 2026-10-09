@@ -179,10 +179,8 @@ export default function Review() {
             });
 
             setResult(response.data);
-            track("review_completed", { language });
         } catch (error) {
             console.error("Review error:", error);
-            track("review_failed", { language });
         } finally {
             setLoading(false);
         }
