@@ -20,6 +20,7 @@
     "framer-motion": "^13.0.0",
     "jspdf": "^4.2.1",
     "lucide-react": "^1.28.0",
+    "posthog-js": "^1.438.3",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "react-icons": "^5.7.0",

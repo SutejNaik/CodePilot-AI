@@ -274,7 +274,7 @@ export default function Login() {
 
             localStorage.setItem("token", response.data.access_token);
             setMessage({ type: "success", text: "Signed in. Taking you to your dashboard..." });
-
+            track("login_success");
             redirectTimer.current = setTimeout(() => navigate("/dashboard"), 1200);
         } catch (error) {
             setMessage({
@@ -379,8 +379,8 @@ export default function Login() {
                                     <div
                                         role={message.type === "error" ? "alert" : "status"}
                                         className={`flex items-start gap-2 rounded-xl border px-3.5 py-3 text-sm backdrop-blur-sm ${message.type === "success"
-                                                ? "border-emerald-400/40 bg-emerald-500/[0.12] text-emerald-200"
-                                                : "border-red-400/40 bg-red-500/[0.12] text-red-200"
+                                            ? "border-emerald-400/40 bg-emerald-500/[0.12] text-emerald-200"
+                                            : "border-red-400/40 bg-red-500/[0.12] text-red-200"
                                             }`}
                                     >
                                         {message.type === "success" ? (

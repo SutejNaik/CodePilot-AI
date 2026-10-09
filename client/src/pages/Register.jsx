@@ -264,7 +264,7 @@ export default function Register() {
                 email: formData.email,
                 password: formData.password,
             });
-
+            track("signup_completed");
             setMessage({
                 type: "success",
                 text: response.data.message || "Account created! Redirecting to login...",
@@ -394,8 +394,8 @@ export default function Register() {
                                     <div
                                         role={message.type === "error" ? "alert" : "status"}
                                         className={`flex items-center gap-2 rounded-xl border px-3.5 py-3 text-sm backdrop-blur-sm ${message.type === "success"
-                                                ? "border-emerald-400/40 bg-emerald-500/[0.12] text-emerald-200"
-                                                : "border-red-400/40 bg-red-500/[0.12] text-red-200"
+                                            ? "border-emerald-400/40 bg-emerald-500/[0.12] text-emerald-200"
+                                            : "border-red-400/40 bg-red-500/[0.12] text-red-200"
                                             }`}
                                     >
                                         {message.type === "success" ? (
